@@ -1,0 +1,1259 @@
+{
+  "problems": [
+    {
+      "id": "accessibility-crisis",
+      "title": "The Accessibility Crisis",
+      "theme": "Digital Inclusion in Educational Technology",
+      "initialBudget": 45000,
+      "briefDescription": "Your company, TechVision Learning, has just launched a new online learning platform designed to help students across the UK improve their digital skills. However, within weeks of launch, you've received complaints from users with disabilities—students using screen readers report that course materials are unusable, deaf students cannot access video content without captions, and students with motor impairments struggle with the navigation interface.\n\nThe situation has escalated: accessibility advocacy groups have begun a social media campaign criticizing TechVision Learning, and several schools have threatened to stop using your platform. The company's leadership team has called an emergency meeting and asked your technical team to investigate and fix these critical issues.\n\nYour role is to lead the development decisions that will determine how quickly and effectively your team addresses these accessibility barriers. Every decision you make will impact your company's reputation (Trust), the inclusivity of your platform (Inclusivity), the speed of implementation (Impact), and your development budget (Budget in £).\n\nYou have multiple stages of critical decisions ahead. Your goal is to make choices that balance accessibility improvements with realistic constraints, while keeping your team and stakeholders satisfied. The stakes are high—this is about ensuring that all students, regardless of ability, can access quality education.",
+      "objectives": "Lead your team through accessibility crisis management. Make decisions that improve platform accessibility while managing team resources and company reputation.",
+      "stages": [
+        {
+          "id": "phase-1-assessment",
+          "title": "Phase 1: Rapid Accessibility Assessment",
+          "description": "Your team needs to understand the full scope of accessibility issues before diving into fixes. You've received initial complaints about screen readers, captions, and keyboard navigation. You decide it's time to conduct a comprehensive audit. Two options are on the table:\n\nOption A: Hire an external accessibility consultancy (cost: £8,000) to conduct a thorough 2-week audit using specialized testing tools and real users with disabilities. This will give you a complete picture of all issues and recommended fixes, building credibility with accessibility advocates.\n\nOption B: Have your internal team conduct a self-assessment using free accessibility tools and industry guidelines (cost: £1,500 for tools). This is faster to start but may miss some issues and might not satisfy external critics who want independent verification.",
+          "choices": [
+            {
+              "text": "Hire external accessibility consultancy for comprehensive audit",
+              "effects": {
+                "impact": 8,
+                "inclusivity": 15,
+                "trust": 12,
+                "budget": -8000
+              }
+            },
+            {
+              "text": "Use internal team for self-assessment with free tools",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 8,
+                "trust": -5,
+                "budget": -1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "phase-2-team-formation",
+          "title": "Phase 2: Building Your Accessibility Team",
+          "description": "The assessment is complete, and the results are clear: your platform has significant accessibility gaps. Now you need to assemble a team to fix these issues. You need developers, designers, and someone with lived experience of disability to guide your decisions. You're considering two approaches:\n\nOption A: Hire a dedicated accessibility specialist (£3,500/month) who has a visual impairment and years of experience testing with assistive technologies. This person will be essential for validating your fixes and advising on real-world usability.\n\nOption B: Distribute accessibility responsibilities among existing team members (£500 extra per month for training courses). This saves money but your team is already stretched thin, and they lack expertise.",
+          "choices": [
+            {
+              "text": "Hire dedicated accessibility specialist",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 18,
+                "trust": 14,
+                "budget": -3500
+              }
+            },
+            {
+              "text": "Train existing team to handle accessibility (lower cost)",
+              "effects": {
+                "impact": 6,
+                "inclusivity": 10,
+                "trust": -8,
+                "budget": -500
+              }
+            }
+          ]
+        },
+        {
+          "id": "phase-3-implementation",
+          "title": "Phase 3: Implementation Strategy",
+          "description": "With your team assembled, you need to decide how to tackle the fixes. Your backlog includes adding captions to 500+ videos, rewriting the navigation for keyboard access, improving color contrast, and making the interface work with screen readers. You're faced with a critical decision:\n\nOption A: Launch a phased rollout over 3 months, making public commitments and updates every 2 weeks (£12,000). This builds trust through transparency and allows you to gather user feedback early, but delays full accessibility.\n\nOption B: Work privately for 6 weeks and launch all fixes at once when complete (£9,000). This is faster overall but risks further criticism if people feel ignored during the wait.",
+          "choices": [
+            {
+              "text": "Phased rollout with public updates every 2 weeks",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 14,
+                "trust": 16,
+                "budget": -12000
+              }
+            },
+            {
+              "text": "Complete all fixes privately, launch everything at once",
+              "effects": {
+                "impact": 16,
+                "inclusivity": 12,
+                "trust": 8,
+                "budget": -9000
+              }
+            }
+          ]
+        },
+        {
+          "id": "phase-4-community",
+          "title": "Phase 4: Community Engagement",
+          "description": "As your team makes progress, you realize that the accessibility advocates and disabled users who originally complained need to be part of the solution. Ignoring them could undermine all your hard work. You're deciding whether to:\n\nOption A: Form an accessibility advisory board (£2,000) with 8-10 disabled users who will test your platform monthly and provide feedback. This is more time-consuming but creates genuine partnerships and catches issues early.\n\nOption B: Collect feedback through a simple online survey (£300). Quick and cheap, but less likely to inform you about nuanced issues that real users encounter.",
+          "choices": [
+            {
+              "text": "Create accessibility advisory board with real disabled users",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 18,
+                "trust": 17,
+                "budget": -2000
+              }
+            },
+            {
+              "text": "Use simple online survey for feedback",
+              "effects": {
+                "impact": 6,
+                "inclusivity": 10,
+                "trust": 6,
+                "budget": -300
+              }
+            }
+          ]
+        },
+        {
+          "id": "phase-5-sustainability",
+          "title": "Phase 5: Long-Term Accessibility",
+          "description": "Your fixes are nearly complete, and accessibility is improving dramatically. But you know from research that accessibility isn't a one-time project—it requires ongoing commitment. You're deciding how to ensure accessibility doesn't regress after this crisis is resolved:\n\nOption A: Build accessibility testing into every release (£4,500 for automated tools + training). This prevents new accessibility issues in future updates and shows you're serious about long-term inclusion.\n\nOption B: Say the crisis is resolved and move the accessibility specialist to other projects (saves £3,500/month). This frees up budget but risks creating new accessibility problems with future updates.",
+          "choices": [
+            {
+              "text": "Invest in permanent accessibility testing and practices",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 16,
+                "trust": 15,
+                "budget": -4500
+              }
+            },
+            {
+              "text": "Consider accessibility crisis solved, reassign specialist",
+              "effects": {
+                "impact": 8,
+                "inclusivity": 4,
+                "trust": -12,
+                "budget": 3500
+              }
+            }
+          ]
+        },
+        {
+          "id": "phase-6-documentation",
+          "title": "Phase 6: Documentation and Knowledge Sharing",
+          "description": "Your team has learned so much about accessibility. You now have a choice about how to capture and share this knowledge:\n\nOption A: Create comprehensive accessibility documentation and publish case studies (£3,000) showing your journey. This helps other educators and tech companies learn from your experience, building your reputation as accessibility leaders.\n\nOption B: Keep documentation internal only (£500). Focus on your own platform rather than helping competitors—you keep your competitive advantage but miss an opportunity to shift the industry.",
+          "choices": [
+            {
+              "text": "Publish comprehensive accessibility documentation and case studies",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 16,
+                "trust": 17,
+                "budget": -3000
+              }
+            },
+            {
+              "text": "Keep documentation internal only",
+              "effects": {
+                "impact": 9,
+                "inclusivity": 10,
+                "trust": 6,
+                "budget": -500
+              }
+            }
+          ]
+        },
+        {
+          "id": "phase-7-expansion",
+          "title": "Phase 7: Expanding to Mobile and Assistive Tech Support",
+          "description": "Your desktop platform is now accessible, but 60% of your users access your platform on mobile phones. Many disabled students rely on mobile-specific assistive technologies. You're considering:\n\nOption A: Fully redesign the app for mobile accessibility (£7,000). This ensures blind users can navigate via screen readers, deaf users get captions in videos, and motor-impaired users can use voice commands. Comprehensive but expensive.\n\nOption B: Make minor mobile improvements (£2,000). Your app works on mobile but doesn't leverage mobile-specific accessibility features. Partially solves the problem.",
+          "choices": [
+            {
+              "text": "Fully redesign mobile app for complete accessibility",
+              "effects": {
+                "impact": 15,
+                "inclusivity": 18,
+                "trust": 15,
+                "budget": -7000
+              }
+            },
+            {
+              "text": "Make minor mobile usability improvements",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 12,
+                "trust": 8,
+                "budget": -2000
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-privacy-scandal",
+      "title": "The Data Privacy Scandal",
+      "theme": "Student Data Protection and GDPR Compliance",
+      "initialBudget": 52000,
+      "briefDescription": "It's Tuesday morning, and your team has just discovered something alarming. A security researcher contacted your company to report that student personal data—including names, email addresses, dates of birth, and learning progress records—is accessible through an unsecured API endpoint that you didn't know was public.\n\nThe data breach affects approximately 15,000 students from 25 schools across the UK. Under GDPR regulations, you have 72 hours to notify affected individuals, and there are potential fines of up to £20 million for serious violations.\n\nYour company's executives are panicking. Parents are starting to call schools. The media is asking questions. Your team has been pulled into an emergency crisis meeting, and every decision you make in the next few hours will determine whether this becomes a minor incident or a catastrophic reputation disaster.\n\nAs the technical lead, you need to navigate the complex choices around transparency, remediation, resource allocation, and stakeholder communication. You have limited time and a limited budget to fix this security issue, manage the crisis, and rebuild trust.\n\nYour decisions will affect how quickly you resolve the technical problem (Impact), whether affected students and families feel you're being honest (Trust), whether you protect vulnerable young people's futures (Inclusivity of care), and whether you have the resources to do all this properly (Budget in £).",
+      "objectives": "Navigate a data privacy crisis. Make decisions that secure student data, comply with regulations, and restore public trust while managing limited resources.",
+      "stages": [
+        {
+          "id": "pd-crisis-response",
+          "title": "Stage 1: Immediate Crisis Response",
+          "description": "You have 72 hours to notify affected users and regulators. The security issue needs an immediate temporary fix, and you need to decide how transparent to be. Your options:\n\nOption A: Immediately shut down the vulnerable API endpoint (£250), publish a detailed timeline of what happened on your website, and proactively notify affected families by email within 24 hours. This is honest but might intensify media scrutiny.\n\nOption B: Quickly patch the endpoint with temporary access controls (£800), issue a brief statement saying you've fixed a \"technical issue,\" and wait for regulators to contact you before providing details. Faster and less attention-grabbing, but feels evasive.",
+          "choices": [
+            {
+              "text": "Immediate shutdown + transparent notification to all affected families",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 16,
+                "trust": 18,
+                "budget": -250
+              }
+            },
+            {
+              "text": "Quick temporary patch + minimal public statement",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 8,
+                "trust": -10,
+                "budget": -800
+              }
+            }
+          ]
+        },
+        {
+          "id": "pd-investigation",
+          "title": "Stage 2: Investigation and Root Cause Analysis",
+          "description": "You need to understand how this happened and whether any data was actually accessed by unauthorized people. You have two paths:\n\nOption A: Hire external forensic cybersecurity firm (£6,500) to conduct a complete investigation, review server logs, and produce a detailed report. This is expensive but provides independent credibility and might identify other vulnerabilities.\n\nOption B: Do an internal investigation (£1,200 for tools). Your team reviews logs themselves. It's cheaper but your conclusions might be questioned by parents and regulators.",
+          "choices": [
+            {
+              "text": "Hire external forensic cybersecurity firm for full investigation",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 14,
+                "trust": 16,
+                "budget": -6500
+              }
+            },
+            {
+              "text": "Conduct internal investigation with minimal cost",
+              "effects": {
+                "impact": 8,
+                "inclusivity": 10,
+                "trust": -8,
+                "budget": -1200
+              }
+            }
+          ]
+        },
+        {
+          "id": "pd-remediation",
+          "title": "Stage 3: Remediation and Rebuilding",
+          "description": "Whether or not data was actually stolen, you need to rebuild your security architecture. Two competing approaches:\n\nOption A: Comprehensive security overhaul (£14,000): Implement a new API authentication system, encrypt all student data at rest, hire a full-time security engineer, and conduct a complete external penetration test. This takes 8 weeks but creates genuinely strong defenses.\n\nOption B: Emergency quick-fix security patch (£4,000): Add access controls to the broken endpoint and implement basic encryption. Faster (2 weeks) but doesn't address deeper vulnerabilities.",
+          "choices": [
+            {
+              "text": "Comprehensive security overhaul with external testing",
+              "effects": {
+                "impact": 16,
+                "inclusivity": 14,
+                "trust": 18,
+                "budget": -14000
+              }
+            },
+            {
+              "text": "Quick emergency patch on vulnerable endpoint",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 10,
+                "trust": 8,
+                "budget": -4000
+              }
+            }
+          ]
+        },
+        {
+          "id": "pd-support",
+          "title": "Stage 4: Student and Family Support",
+          "description": "Affected families are worried, and several are considering legal action. You need to decide on your support approach:\n\nOption A: Offer free one-year identity theft insurance (£3,200) to all affected students and their families, plus a dedicated support line (£1,500) staffed 9am-7pm weekdays by someone who can answer questions empathetically. This acknowledges the seriousness of the breach.\n\nOption B: Provide a standard apology letter and point people to the UK government's advice on data breaches (£100). Does the minimum required.",
+          "choices": [
+            {
+              "text": "Offer identity theft insurance and dedicated support line",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 18,
+                "trust": 17,
+                "budget": -4700
+              }
+            },
+            {
+              "text": "Standard apology and government resource links",
+              "effects": {
+                "impact": 6,
+                "inclusivity": 8,
+                "trust": 4,
+                "budget": -100
+              }
+            }
+          ]
+        },
+        {
+          "id": "pd-governance",
+          "title": "Stage 5: Future Governance and Transparency",
+          "description": "To rebuild trust and prevent future crises, you need sustainable security governance:\n\nOption A: Establish a privacy office (hire £2,800/month for a privacy officer) and create a public transparency report showing security metrics and privacy improvements quarterly. This signals serious commitment but requires ongoing investment.\n\nOption B: Appoint an existing team member to oversee privacy (£300/month extra) and keep security details confidential. Much cheaper but less transparent.",
+          "choices": [
+            {
+              "text": "Establish dedicated privacy office with public transparency reports",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 15,
+                "trust": 19,
+                "budget": -2800
+              }
+            },
+            {
+              "text": "Assign privacy role to existing team member",
+              "effects": {
+                "impact": 8,
+                "inclusivity": 10,
+                "trust": 6,
+                "budget": -300
+              }
+            }
+          ]
+        },
+        {
+          "id": "pd-legal",
+          "title": "Stage 6: Legal and Insurance Strategy",
+          "description": "As the crisis unfolds, you're facing potential lawsuits from affected families and regulatory fines. You need a legal strategy:\n\nOption A: Hire a specialist data protection lawyer (£5,000) to represent your company and negotiate with regulators. This maximizes your legal protection but is expensive and might look adversarial to families.\n\nOption B: Work with your existing corporate counsel (£1,000). Less specialized but cheaper and shows you're not over-lawyering the situation.",
+          "choices": [
+            {
+              "text": "Hire specialist data protection lawyer for full legal representation",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 10,
+                "trust": 8,
+                "budget": -5000
+              }
+            },
+            {
+              "text": "Work with existing corporate counsel",
+              "effects": {
+                "impact": 9,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -1000
+              }
+            }
+          ]
+        },
+        {
+          "id": "pd-communication",
+          "title": "Stage 7: Ongoing Communication and Rebuilding",
+          "description": "The breach is stabilized, but families are still worried. You need to decide how to rebuild public trust:\n\nOption A: Launch a comprehensive communication campaign (£4,200) with monthly town halls, detailed security updates sent to all schools, and a \"data protection pledge\" that you stand behind. Shows genuine commitment to change.\n\nOption B: Issue periodic email updates (£500) and assume the crisis will fade. Minimal engagement but cheaper.",
+          "choices": [
+            {
+              "text": "Launch comprehensive communication campaign with regular town halls",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 16,
+                "trust": 18,
+                "budget": -4200
+              }
+            },
+            {
+              "text": "Issue periodic email updates and move forward",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 10,
+                "trust": 8,
+                "budget": -500
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ux-barrier",
+      "title": "The UX Barrier Problem",
+      "theme": "Inclusive Interface Design for Diverse Learning Styles",
+      "initialBudget": 38000,
+      "briefDescription": "Your educational platform was designed by a small team of experienced developers with a very specific vision: minimalist, clean, and fast. It won awards for its design.\n\nBut then something unexpected happened: teachers started reporting that many students struggled to use it. Shy students found the large empty spaces intimidating and didn't know where to click. Students with ADHD reported getting overwhelmed by options and freezing. Older learners without much tech experience felt lost. Neurodivergent students reported finding the aesthetic confusing rather than calming.\n\nUsage data shows it clearly: while tech-savvy students loved your platform, a significant portion of your user base—potentially 40%—were struggling.\n\nYour product team has concluded that the problem isn't that students are incapable. It's that your interface design is optimized for one type of learner while excluding many others. You need to make a difficult choice: do you redesign for inclusivity, and if so, how much does that cost?\n\nYour decisions will impact how many students can effectively use your platform (Impact), how well you serve different learning styles (Inclusivity), whether you maintain your design reputation (Trust), and whether you have the budget to make these changes (Budget in £).",
+      "objectives": "Transform a beautiful but exclusive interface into one that welcomes all learners. Make design decisions that balance innovation with accessibility while managing team capacity and costs.",
+      "stages": [
+        {
+          "id": "ux-research",
+          "title": "Stage 1: Understanding the Problem",
+          "description": "Before you can fix the design, you need to understand exactly who's struggling and why. You're choosing between two research approaches:\n\nOption A: Conduct real user testing sessions (£5,000) where you observe 12-16 students of varying ages, learning styles, and tech experience actually using your platform and talk to them afterward. This takes 3 weeks but gives you deep, specific insights.\n\nOption B: Use a quick anonymous survey (£400) asking students to rate different interface elements. Faster and cheaper but less detailed.",
+          "choices": [
+            {
+              "text": "Conduct detailed user testing with diverse learners",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 16,
+                "trust": 10,
+                "budget": -5000
+              }
+            },
+            {
+              "text": "Deploy quick anonymous survey",
+              "effects": {
+                "impact": 8,
+                "inclusivity": 10,
+                "trust": 6,
+                "budget": -400
+              }
+            }
+          ]
+        },
+        {
+          "id": "ux-design-process",
+          "title": "Stage 2: Choosing Your Design Approach",
+          "description": "Your research reveals that different learners need different things: some need visual guides, others need simpler layouts, others need built-in instructions. You're deciding between design philosophies:\n\nOption A: Design one \"universal\" interface that works well for everyone (£8,500). This requires careful thinking about every element. Takes longer but creates one unified experience.\n\nOption B: Create multiple interface themes users can choose from (£11,000). Lets learners pick what works for them—classic minimalist, detailed with guides, simplified, etc. More flexible but more complex to maintain.",
+          "choices": [
+            {
+              "text": "Design single universal interface optimized for all users",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 14,
+                "trust": 12,
+                "budget": -8500
+              }
+            },
+            {
+              "text": "Create multiple interface themes users can choose",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 17,
+                "trust": 10,
+                "budget": -11000
+              }
+            }
+          ]
+        },
+        {
+          "id": "ux-team",
+          "title": "Stage 3: Assembling Design and UX Team",
+          "description": "Your current design team is small and stretched. To pull off a redesign while keeping the platform running, you need:\n\nOption A: Hire a freelance inclusive design specialist (£6,000) for 2 months to lead the redesign and mentor your existing team. They bring expertise in neurodiversity-friendly design and can train your team.\n\nOption B: Send your existing designers to an online UX course (£1,500 total). They learn on the job but it's slower and might not cover everything you need.",
+          "choices": [
+            {
+              "text": "Hire freelance inclusive design specialist for intensive project",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 16,
+                "trust": 12,
+                "budget": -6000
+              }
+            },
+            {
+              "text": "Train existing team with online courses",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 12,
+                "trust": 8,
+                "budget": -1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "ux-implementation",
+          "title": "Stage 4: Implementation and Testing",
+          "description": "Now you're actually redesigning. The question is how much feedback you get during the process:\n\nOption A: Release a beta version to a small group of 50 diverse learners (£2,000 for incentives and support), gather feedback for 2 weeks, then refine before full launch. Slower but validates your design works.\n\nOption B: Redesign internally, then launch to everyone (£200 for basic testing). Faster but riskier if users still struggle.",
+          "choices": [
+            {
+              "text": "Beta test with diverse learner group before full launch",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 16,
+                "trust": 14,
+                "budget": -2000
+              }
+            },
+            {
+              "text": "Design internally, launch to everyone",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -200
+              }
+            }
+          ]
+        },
+        {
+          "id": "ux-ongoing",
+          "title": "Stage 5: Building Inclusive Design Into Your Culture",
+          "description": "After the redesign launches, you need to ensure it doesn't regress and that future updates maintain inclusivity:\n\nOption A: Hire a part-time UX accessibility auditor (£2,500/month) who reviews every new feature for inclusive design before it launches. Expensive but ensures consistency.\n\nOption B: Add checklists to your development process (£300) that developers review themselves. Cheaper but less expert oversight.",
+          "choices": [
+            {
+              "text": "Hire UX accessibility auditor for ongoing review",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 17,
+                "trust": 14,
+                "budget": -2500
+              }
+            },
+            {
+              "text": "Add self-review checklists to development process",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -300
+              }
+            }
+          ]
+        },
+        {
+          "id": "ux-mobile",
+          "title": "Stage 6: Extending Inclusive Design to Mobile",
+          "description": "Your desktop redesign is successful, but 50% of your learners use mobile devices. Mobile interfaces need different considerations for inclusivity:\n\nOption A: Redesign the mobile app from scratch with inclusive principles (£5,500). Touch targets are larger, navigation is simplified, and it works with mobile screen readers and voice commands.\n\nOption B: Make minimal mobile improvements (£1,500). Responsive design works okay but doesn't leverage mobile accessibility features.",
+          "choices": [
+            {
+              "text": "Fully redesign mobile app for inclusive design",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 17,
+                "trust": 13,
+                "budget": -5500
+              }
+            },
+            {
+              "text": "Make minimal responsive design improvements",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "ux-scaling",
+          "title": "Stage 7: Scaling Beyond Your Platform",
+          "description": "Your inclusive design work is getting noticed. Other educational platforms want to learn from you. You're considering:\n\nOption A: Create and publish an open-source design system (£4,000) that other platforms can use. This shares your knowledge but doesn't directly benefit your platform and takes resources away from new features.\n\nOption B: Keep your design system proprietary and focus on building new features (£800 for documentation). Protects your competitive advantage but misses opportunity to improve the entire industry.",
+          "choices": [
+            {
+              "text": "Publish open-source design system for industry adoption",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 18,
+                "trust": 16,
+                "budget": -4000
+              }
+            },
+            {
+              "text": "Keep design system proprietary and focus internally",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -800
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "algorithm-bias",
+      "title": "The Algorithm Bias Scandal",
+      "theme": "Fairness and Bias in Tech Hiring Systems",
+      "initialBudget": 48000,
+      "briefDescription": "Your company, TalentMatch AI, has built an intelligent hiring platform used by hundreds of companies across the UK to screen job applications. It uses machine learning to identify the best candidates quickly and reduce bias.\n\nThen you discover something troubling: a data scientist on your team finds that your algorithm systematically ranks qualified women and people of color lower than white men who have identical qualifications. It's not intentional discrimination—it's statistical bias baked into your training data. But the damage is real: thousands of diverse candidates have been filtered out unfairly.\n\nThe discovery becomes public. Hiring discrimination advocates demand action. Companies using your platform are panicking. Your board is asking: how do you fix an algorithm that's already caused harm while rebuilding trust in your entire system?\n\nYour decisions will affect how quickly you fix the bias problem (Impact), whether you truly make the hiring process fairer for all candidates (Inclusivity), whether companies and candidates trust your platform again (Trust), and what resources you have left to invest in long-term improvement (Budget in £).",
+      "objectives": "Address algorithmic bias in hiring. Make decisions that fix discrimination, rebuild trust, and prove your commitment to fairness.",
+      "stages": [
+        {
+          "id": "bias-discovery",
+          "title": "Stage 1: Public Response and Immediate Action",
+          "description": "The bias discovery is headlines. You need to act fast. Do you:\n\nOption A: Immediately pause the hiring system's AI scoring (£2,000), issue a detailed public apology with specific examples of bias found, and commit to publishing quarterly fairness audits. This is honest but might scare away customers temporarily.\n\nOption B: Quickly patch the most obvious bias issues (£500), issue a brief statement saying you're \"continuously improving,\" and keep most of the system running. Faster to market but feels like minimizing the problem.",
+          "choices": [
+            {
+              "text": "Pause system, detailed apology, commit to transparency",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 18,
+                "trust": 16,
+                "budget": -2000
+              }
+            },
+            {
+              "text": "Quick patch, brief statement, keep system mostly running",
+              "effects": {
+                "impact": 8,
+                "inclusivity": 8,
+                "trust": -12,
+                "budget": -500
+              }
+            }
+          ]
+        },
+        {
+          "id": "bias-team",
+          "title": "Stage 2: Assembling Diverse AI Ethics Team",
+          "description": "You need experts who can audit and fix bias. Your options:\n\nOption A: Hire external AI ethics consultants and hire 2 full-time diverse data scientists (£7,000 total). They bring specialized expertise in fairness and represent perspectives the bias may have missed.\n\nOption B: Use your existing team and attend an online fairness course (£1,500). Cheaper but your homogeneous team may replicate similar blind spots.",
+          "choices": [
+            {
+              "text": "Hire external ethics consultants + diverse data scientists",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 17,
+                "trust": 15,
+                "budget": -7000
+              }
+            },
+            {
+              "text": "Train existing team with online course",
+              "effects": {
+                "impact": 9,
+                "inclusivity": 10,
+                "trust": 8,
+                "budget": -1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "bias-audit",
+          "title": "Stage 3: Comprehensive Fairness Audit",
+          "description": "You need to understand exactly how bad the bias is across all demographics. Options:\n\nOption A: Commission an independent third-party audit (£8,000) that will test your algorithm against 50+ demographic combinations. Credible but slow (6 weeks) and findings could be damaging.\n\nOption B: Do an internal audit using fairness metrics (£2,000). Faster but your findings might be questioned by clients and regulators.",
+          "choices": [
+            {
+              "text": "Commission independent third-party audit",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 16,
+                "trust": 17,
+                "budget": -8000
+              }
+            },
+            {
+              "text": "Conduct internal fairness audit",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -2000
+              }
+            }
+          ]
+        },
+        {
+          "id": "bias-rebuild",
+          "title": "Stage 4: Rebuilding the Algorithm",
+          "description": "Now you must rebuild the algorithm to remove bias. Two approaches:\n\nOption A: Complete algorithm redesign (£12,000). Rebuild from scratch using fairness-first principles, test extensively with diverse candidates, train on debiased data. Takes 10 weeks but creates genuinely fair system.\n\nOption B: Patch the existing algorithm (£4,000). Add fairness constraints and reweight the algorithm. Fast (2 weeks) but may not fully fix underlying issues.",
+          "choices": [
+            {
+              "text": "Completely rebuild algorithm with fairness-first design",
+              "effects": {
+                "impact": 16,
+                "inclusivity": 18,
+                "trust": 14,
+                "budget": -12000
+              }
+            },
+            {
+              "text": "Add fairness constraints to existing algorithm",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 12,
+                "trust": 9,
+                "budget": -4000
+              }
+            }
+          ]
+        },
+        {
+          "id": "bias-community",
+          "title": "Stage 5: Community Engagement and Testing",
+          "description": "You need to test with actual diverse candidates and hiring managers. How do you engage?\n\nOption A: Form a hiring equity board (£3,500) with 12-15 people from underrepresented groups, hiring managers, and advocates. Test the algorithm and provide ongoing feedback.\n\nOption B: Recruit volunteers online for testing (£500). Faster but less structured community partnership.",
+          "choices": [
+            {
+              "text": "Form hiring equity advisory board with vulnerable communities",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 18,
+                "trust": 16,
+                "budget": -3500
+              }
+            },
+            {
+              "text": "Recruit online volunteers for testing",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 11,
+                "trust": 9,
+                "budget": -500
+              }
+            }
+          ]
+        },
+        {
+          "id": "bias-governance",
+          "title": "Stage 6: Long-Term Fairness Governance",
+          "description": "You need systems to prevent bias from creeping back in. What's your strategy?\n\nOption A: Hire a Chief Fairness Officer (£3,200) and establish quarterly bias audits, mandatory bias training for all engineers, and a fairness review board. Shows serious commitment.\n\nOption B: Add fairness checklists to development (£300). Teams review for bias themselves before launch.",
+          "choices": [
+            {
+              "text": "Hire Chief Fairness Officer with quarterly audits",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 17,
+                "trust": 17,
+                "budget": -3200
+              }
+            },
+            {
+              "text": "Add fairness review checklists to development process",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 11,
+                "trust": 10,
+                "budget": -300
+              }
+            }
+          ]
+        },
+        {
+          "id": "bias-industry",
+          "title": "Stage 7: Industry Leadership and Transparency",
+          "description": "Your work is getting noticed. You're considering your role in the broader industry:\n\nOption A: Publish your fairness methodology and datasets (£4,500) as open-source. Help other companies build fair hiring systems. Shares your competitive advantage but improves the entire industry.\n\nOption B: Keep your fairness methods proprietary (£1,000). Protect your competitive edge while others struggle with bias.",
+          "choices": [
+            {
+              "text": "Publish open-source fairness methodology and datasets",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 18,
+                "trust": 18,
+                "budget": -4500
+              }
+            },
+            {
+              "text": "Keep fairness methods proprietary",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 10,
+                "trust": 11,
+                "budget": -1000
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "digital-divide",
+      "title": "The Digital Divide Crisis",
+      "theme": "Equitable Access to Remote Learning Technology",
+      "initialBudget": 50000,
+      "briefDescription": "Your educational platform, EduConnect, serves schools across rural and urban UK. You've built amazing remote learning features that reduced the achievement gap during lockdowns.\n\nThen you discover the gap is widening again: students in rural areas and low-income families simply don't have reliable broadband. Some have to tether to mobile phone hotspots. Others share a single family device among 3+ children. Your fancy features—HD video, real-time collaboration, interactive simulations—simply don't work for them.\n\nMeanwhile, privileged students with gigabit fiber and personal laptops are thriving. Your platform has become a tool that increases inequality instead of reducing it.\n\nNow you must choose: do you redesign for low-bandwidth access? Do you provide devices? Do you push back against the reality that true digital equity requires massive resources?\n\nYour decisions will impact how broadly your platform works (Impact), whether all students can truly participate (Inclusivity), whether families trust that you care about their circumstances (Trust), and what resources remain for other improvements (Budget in £).",
+      "objectives": "Bridge the digital divide. Make decisions that ensure rural and low-income students can fully participate in remote learning.",
+      "stages": [
+        {
+          "id": "dd-research",
+          "title": "Stage 1: Understanding the Connectivity Crisis",
+          "description": "You need data on who's excluded. How do you gather it?\n\nOption A: Commission a comprehensive survey (£6,000) of 2,000 students and families across rural/urban and income levels, testing actual connectivity and device access. Deep understanding but takes 4 weeks.\n\nOption B: Collect quick feedback via your app (£400). Fast and cheap but less representative sample.",
+          "choices": [
+            {
+              "text": "Commission comprehensive connectivity and access survey",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 16,
+                "trust": 12,
+                "budget": -6000
+              }
+            },
+            {
+              "text": "Collect quick in-app feedback",
+              "effects": {
+                "impact": 8,
+                "inclusivity": 10,
+                "trust": 6,
+                "budget": -400
+              }
+            }
+          ]
+        },
+        {
+          "id": "dd-optimization",
+          "title": "Stage 2: Low-Bandwidth Platform Optimization",
+          "description": "Your platform must work on slow connections. Options:\n\nOption A: Complete platform redesign for offline-first, low-bandwidth access (£9,000). All features work on 3G, content syncs when connection available, videos auto-compress, text-based alternatives for all media.\n\nOption B: Optimize videos and reduce image quality (£2,500). Helps but doesn't fix core issues for very slow connections.",
+          "choices": [
+            {
+              "text": "Complete redesign for offline-first low-bandwidth",
+              "effects": {
+                "impact": 16,
+                "inclusivity": 18,
+                "trust": 14,
+                "budget": -9000
+              }
+            },
+            {
+              "text": "Optimize videos and reduce image quality",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 11,
+                "trust": 8,
+                "budget": -2500
+              }
+            }
+          ]
+        },
+        {
+          "id": "dd-devices",
+          "title": "Stage 3: Device Access Program",
+          "description": "Many students don't have their own device. Your options:\n\nOption A: Launch a device loan program (£15,000) providing refurbished tablets/laptops to 200 low-income students per year. Transformative impact but very expensive and logistically complex.\n\nOption B: Partner with schools to provide devices during school hours only (£3,000). Helps but doesn't solve home access problem.",
+          "choices": [
+            {
+              "text": "Launch comprehensive device loan program",
+              "effects": {
+                "impact": 17,
+                "inclusivity": 19,
+                "trust": 16,
+                "budget": -15000
+              }
+            },
+            {
+              "text": "Partner with schools for in-school device access",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -3000
+              }
+            }
+          ]
+        },
+        {
+          "id": "dd-teacher-support",
+          "title": "Stage 4: Teacher Training and Blended Learning",
+          "description": "Teachers need to adapt their teaching for mixed connectivity. How do you support them?\n\nOption A: Launch comprehensive instructor training program (£5,000). Teachers learn to deliver mixed synchronous/asynchronous lessons, offline-friendly activities, group work designs that don't require everyone online simultaneously.\n\nOption B: Create simple teacher guides (£800). Less comprehensive support but cheaper.",
+          "choices": [
+            {
+              "text": "Launch comprehensive blended learning instructor training",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 15,
+                "trust": 14,
+                "budget": -5000
+              }
+            },
+            {
+              "text": "Publish simple teacher guides",
+              "effects": {
+                "impact": 9,
+                "inclusivity": 10,
+                "trust": 8,
+                "budget": -800
+              }
+            }
+          ]
+        },
+        {
+          "id": "dd-content",
+          "title": "Stage 5: Low-Bandwidth Content Library",
+          "description": "Create content designed for low connectivity. Options:\n\nOption A: Develop text-based and voice-only versions of all courses (£6,000). Audio files work on 2G, text works on dial-up, everything is small bandwidth. Genuinely inclusive.\n\nOption B: Create optional text summaries of video content (£1,500). Helps but less comprehensive.",
+          "choices": [
+            {
+              "text": "Develop complete text and voice-only course versions",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 17,
+                "trust": 15,
+                "budget": -6000
+              }
+            },
+            {
+              "text": "Create text summaries for key video content",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -1500
+              }
+            }
+          ]
+        },
+        {
+          "id": "dd-mobile",
+          "title": "Stage 6: Mobile-First and SMS Support",
+          "description": "Most excluded students access via mobile phone. What's your strategy?\n\nOption A: Rebuild entire platform mobile-first, SMS for notifications/submissions (£7,000). Works on basic phones with 2G network. Genuinely reaches everyone.\n\nOption B: Create a basic mobile app (£2,000). Better than responsive web but still requires data.",
+          "choices": [
+            {
+              "text": "Mobile-first redesign with SMS support for 2G",
+              "effects": {
+                "impact": 15,
+                "inclusivity": 18,
+                "trust": 16,
+                "budget": -7000
+              }
+            },
+            {
+              "text": "Build basic mobile app",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -2000
+              }
+            }
+          ]
+        },
+        {
+          "id": "dd-advocacy",
+          "title": "Stage 7: Advocating for Broadband Infrastructure",
+          "description": "Long-term solution requires better infrastructure. Your role:\n\nOption A: Partner with government and NGOs on broadband advocacy (£3,500). Fund policy research, write policy briefs, present to parliament on digital equity. Shape industry standards and policy.\n\nOption B: Focus internally on your platform (£500). Keep your head down and optimize what you control.",
+          "choices": [
+            {
+              "text": "Partner on broadband infrastructure advocacy",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 17,
+                "trust": 17,
+                "budget": -3500
+              }
+            },
+            {
+              "text": "Stay focused on platform optimization",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 12,
+                "trust": 9,
+                "budget": -500
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "content-moderation",
+      "title": "The Cyberbullying Crisis",
+      "theme": "Student Safety and Responsible Content Moderation",
+      "initialBudget": 46000,
+      "briefDescription": "Your social learning platform, ConnectEd, is wildly popular with teenagers. It lets students collaborate on projects, share learning resources, and connect across schools. You're proud of building something young people actually want to use.\n\nThen you receive reports of cyberbullying, hate speech, and sexual harassment on your platform. Some students have attempted suicide after campaigns of harassment. Parents are demanding accountability. Schools are threatening to ban your platform. Mental health advocates say you're putting teen safety at risk by not moderating content aggressively enough.\n\nYou face an impossible dilemma: moderate too strictly and you kill the authentic community that makes the platform special. Moderate too loosely and you're allowing serious harm. Free speech advocates say any moderation is censorship. Child safety advocates say you're not doing enough.\n\nYour decisions will impact how safe the platform actually is (Impact), whether all students can participate without fear (Inclusivity), whether families and schools trust you to protect young people (Trust), and what resources you have to invest in the moderation infrastructure (Budget in £).",
+      "objectives": "Protect student safety. Make decisions that prevent cyberbullying and harassment while preserving authentic community.",
+      "stages": [
+        {
+          "id": "cm-crisis",
+          "title": "Stage 1: Crisis Response and Immediate Safety",
+          "description": "Young people are actively being harassed. Your immediate response:\n\nOption A: Implement aggressive temporary content filters (£4,000), hire emergency moderators, create crisis support resources. Remove any post with reported harassment within 1 hour. Partner with mental health organizations. This prevents immediate harm but may feel heavy-handed.\n\nOption B: Improve reporting tools and train community moderators (£1,000). Let users flag content, empower peer moderation. Faster to implement but slower response to harm.",
+          "choices": [
+            {
+              "text": "Aggressive filtering and emergency moderation team",
+              "effects": {
+                "impact": 15,
+                "inclusivity": 14,
+                "trust": 16,
+                "budget": -4000
+              }
+            },
+            {
+              "text": "Enhanced reporting and peer moderation",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -1000
+              }
+            }
+          ]
+        },
+        {
+          "id": "cm-team",
+          "title": "Stage 2: Building Safety Expertise",
+          "description": "You need genuine safety experts, not just engineers. Options:\n\nOption A: Hire a VP of Safety with expertise in teen safety, content moderation, and mental health (£5,000). Build a team that understands the nuance—not overreach, not under-protect.\n\nOption B: Hire a moderator coordinator (£2,000). Manage moderation but less strategic expertise.",
+          "choices": [
+            {
+              "text": "Hire VP of Safety with specialist expertise",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 15,
+                "trust": 16,
+                "budget": -5000
+              }
+            },
+            {
+              "text": "Hire moderator coordinator",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 11,
+                "trust": 10,
+                "budget": -2000
+              }
+            }
+          ]
+        },
+        {
+          "id": "cm-moderation",
+          "title": "Stage 3: Moderation Infrastructure Policy",
+          "description": "You need fair, transparent moderation policies. Options:\n\nOption A: Build comprehensive moderation policy (£6,000) with clear definitions, appeal processes, transparency reports, and human review for edge cases. Slow but fair and defensible.\n\nOption B: Use automated filters (£2,000). Fast but risks both false positives (censoring harmless content) and false negatives (missing real harm).",
+          "choices": [
+            {
+              "text": "Build comprehensive policy with human review",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 15,
+                "trust": 17,
+                "budget": -6000
+              }
+            },
+            {
+              "text": "Implement automated content filters",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 10,
+                "trust": 11,
+                "budget": -2000
+              }
+            }
+          ]
+        },
+        {
+          "id": "cm-mental-health",
+          "title": "Stage 4: Mental Health Support Infrastructure",
+          "description": "Moderation alone won't solve the problem. You need support for affected students:\n\nOption A: Partner with mental health services (£4,500). Partner with organizations that can provide counseling, crisis hotline access, and support to harassed students. Genuine help but not your core competency.\n\nOption B: Create in-app support resources (£800). Links to crisis hotlines, self-help guides. Less comprehensive.",
+          "choices": [
+            {
+              "text": "Partner with mental health services for direct support",
+              "effects": {
+                "impact": 14,
+                "inclusivity": 17,
+                "trust": 16,
+                "budget": -4500
+              }
+            },
+            {
+              "text": "Create in-app support resources and guides",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 12,
+                "trust": 10,
+                "budget": -800
+              }
+            }
+          ]
+        },
+        {
+          "id": "cm-education",
+          "title": "Stage 5: Digital Citizenship and Parent Education",
+          "description": "Prevention is better than moderation. Options:\n\nOption A: Create comprehensive digital citizenship curriculum (£5,000) for students and parent training program. Teach empathy, consequences of harassment, media literacy, how to be an upstander rather than bystander.\n\nOption B: Create simple guides (£1,000). Cheaper but less transformative.",
+          "choices": [
+            {
+              "text": "Develop digital citizenship curriculum and parent training",
+              "effects": {
+                "impact": 13,
+                "inclusivity": 16,
+                "trust": 15,
+                "budget": -5000
+              }
+            },
+            {
+              "text": "Create simple guides",
+              "effects": {
+                "impact": 9,
+                "inclusivity": 11,
+                "trust": 9,
+                "budget": -1000
+              }
+            }
+          ]
+        },
+        {
+          "id": "cm-transparency",
+          "title": "Stage 6: Transparency and Accountability",
+          "description": "How transparent are you about what happens on your platform?\n\nOption A: Publish detailed transparency reports (£3,000) quarterly showing harassment reports, actions taken, appeal outcomes, demographic breakdowns. Shows you're serious about accountability.\n\nOption B: Keep moderation details private (£300). Protects harassed students' privacy but raises trust questions.",
+          "choices": [
+            {
+              "text": "Publish detailed quarterly transparency reports",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 14,
+                "trust": 18,
+                "budget": -3000
+              }
+            },
+            {
+              "text": "Keep moderation details confidential",
+              "effects": {
+                "impact": 10,
+                "inclusivity": 11,
+                "trust": 10,
+                "budget": -300
+              }
+            }
+          ]
+        },
+        {
+          "id": "cm-community",
+          "title": "Stage 7: Community Safety Board",
+          "description": "Who decides what's acceptable on your platform?\n\nOption A: Establish Community Safety Board (£2,500) with student representatives, parents, educators, mental health experts. They review policies, hear appeals, guide platform decisions. Genuinely democratic.\n\nOptionB: Focus on expert-led safety (£500). Your team makes decisions without community input.",
+          "choices": [
+            {
+              "text": "Establish Community Safety Board with diverse stakeholders",
+              "effects": {
+                "impact": 12,
+                "inclusivity": 17,
+                "trust": 17,
+                "budget": -2500
+              }
+            },
+            {
+              "text": "Expert-led safety decisions",
+              "effects": {
+                "impact": 11,
+                "inclusivity": 11,
+                "trust": 11,
+                "budget": -500
+              }
+            }
+          ]
+        },
+    {
+      "id": "server-outage",
+      "title": "The Server Outage Disaster",
+      "theme": "Reliability and Incident Response in Cloud Services",
+      "initialBudget": 42000,
+      "briefDescription": "Your SaaS education platform, CloudClass, runs on a cluster of servers. One night a datacenter power failure causes a full outage, leaving thousands of students and teachers locked out of the system during exam week. Schools are furious, regulators are demanding answers, and your CTO is getting calls from investors.\n\nYou must make decisions under intense pressure: restore service quickly, communicate honestly, and decide how much to invest in redundancy versus cost savings. Every choice affects uptime (Impact), customer trust (Trust), user inclusivity (Inclusivity) since some areas have no alternative systems, and your operational budget (Budget in £).",
+      "objectives": "Recover from a catastrophic outage while rebuilding faith in your platform and deciding how much to spend on future reliability.",
+      "stages": [
+        {
+          "id": "so-response",
+          "title": "Stage 1: Immediate Response",
+          "description": "The platform is down and complaints are pouring in. You can:\n\nOption A: Failover to a backup datacenter (£5,000) even though it's slow to spin up, and send a frank apology email explaining the outage. This regains some trust but costs money.\n\nOption B: Try to patch the primary servers quickly (£1,000), send a vague \"technical difficulties\" notice, and hope customers wait. Saves cash but risks bigger blowback if it fails again.",
+          "choices": [
+            {"text": "Failover to backup and send honest apology","effects":{"impact":14,"inclusivity":12,"trust":16,"budget":-5000}},
+            {"text": "Patch primary and send vague notice","effects":{"impact":9,"inclusivity":10,"trust":-10,"budget":-1000}}
+          ]
+        },
+        {
+          "id": "so-investigation",
+          "title": "Stage 2: Root Cause Investigation",
+          "description": "Once service is restored, you must find out what went wrong. You can:\n\nOption A: Hire external consultants to audit your infrastructure (£6,000). Takes time but gives credibility.\n\nOption B: Let your in‑house team dig through logs (£1,500). Faster but may miss hidden issues.",
+          "choices": [
+            {"text": "External infrastructure audit","effects":{"impact":12,"inclusivity":12,"trust":14,"budget":-6000}},
+            {"text": "Internal log review","effects":{"impact":8,"inclusivity":10,"trust":8,"budget":-1500}}
+          ]
+        },
+        {
+          "id": "so-communication",
+          "title": "Stage 3: Customer Communication",
+          "description": "How transparent will you be moving forward?\n\nOption A: Publish full post-mortem with timeline and fixes (£2,000). Builds trust but reveals weakness.\n\nOption B: Share only high-level summary (£500). Safer but may leave customers skeptical.",
+          "choices": [
+            {"text": "Publish full post-mortem","effects":{"impact":10,"inclusivity":12,"trust":16,"budget":-2000}},
+            {"text": "Share high-level summary","effects":{"impact":8,"inclusivity":10,"trust":8,"budget":-500}}
+          ]
+        },
+        {
+          "id": "so-redundancy",
+          "title": "Stage 4: Investing in Redundancy",
+          "description": "Do you spend to prevent future outages?\n\nOption A: Build multi-region redundancy (£10,000). Expensive but nearly eliminates single-point failures.\n\nOption B: Add local UPS and backups (£3,000). Less costly but still vulnerable to datacenter-level events.",
+          "choices": [
+            {"text": "Multi-region redundancy","effects":{"impact":16,"inclusivity":14,"trust":15,"budget":-10000}},
+            {"text": "Local UPS and backups","effects":{"impact":10,"inclusivity":12,"trust":10,"budget":-3000}}
+          ]
+        },
+        {
+          "id": "so-testing",
+          "title": "Stage 5: Disaster Recovery Drills",
+          "description": "You need to practice so staff aren't caught off guard. Options:\n\nOption A: Run quarterly full drills with downtime simulate (£4,000). Disruptive but ensures preparedness.\n\nOption B: Do annual tabletop exercises (£800). Minimal disruption but less realistic.",
+          "choices": [
+            {"text": "Quarterly full disaster drills","effects":{"impact":13,"inclusivity":12,"trust":14,"budget":-4000}},
+            {"text": "Annual tabletop exercises","effects":{"impact":9,"inclusivity":10,"trust":10,"budget":-800}}
+          ]
+        },
+        {
+          "id": "so-pricing",
+          "title": "Stage 6: Pricing for Reliability",
+          "description": "Should you charge more for higher uptime?\n\nOption A: Introduce premium plans with uptime guarantees (£5,000 development cost). Extra revenue but may alienate budget customers.\n\nOption B: Keep flat pricing and absorb costs (£0 change). Simpler but puts burden on company.",
+          "choices": [
+            {"text": "Premium uptime plans","effects":{"impact":12,"inclusivity":8,"trust":12,"budget":-5000}},
+            {"text": "Flat pricing, absorb costs","effects":{"impact":10,"inclusivity":10,"trust":10,"budget":0}}
+          ]
+        },
+        {
+          "id": "so-promotion",
+          "title": "Stage 7: Rebuilding Brand Image",
+          "description": "After the drama, how do you regain market share?\n\nOption A: Launch a marketing campaign highlighting new reliability features (£6,000). Risky but can turn crisis into selling point.\n\nOption B: Rely on word-of-mouth from existing satisfied customers (£1,000). Cheaper but slower recovery.",
+          "choices": [
+            {"text": "Marketing campaign for reliability","effects":{"impact":14,"inclusivity":12,"trust":14,"budget":-6000}},
+            {"text": "Word-of-mouth recovery","effects":{"impact":10,"inclusivity":10,"trust":10,"budget":-1000}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai-surveillance",
+      "title": "The AI Surveillance Dilemma",
+      "theme": "Privacy vs. Safety in School Monitoring Tools",
+      "initialBudget": 47000,
+      "briefDescription": "Your company supplies an AI-powered monitoring tool used by schools to detect potential threats and improve student wellbeing by analyzing chat logs and video feeds. After installation, parents discover the system also flags benign behaviour like wearing hoodies or speaking another language, leading to false reports and privacy outcry. Some students feel constantly watched and creativity is stifled.\n\nYou're torn between improving safety and respecting student privacy. Each choice affects perceived impact on wellbeing, inclusivity of diverse students, trust from parents and regulators, and your development budget.",
+      "objectives": "Balance safety with privacy. Decide how invasive the monitoring should be and how transparent you are about data use.",
+      "stages": [
+        {
+          "id": "as-policy",
+          "title": "Stage 1: Establish Monitoring Policy",
+          "description": "Do you:\n\nOption A: Define strict privacy rules and limit monitoring to explicit threats (£3,000). May miss subtle issues but respects privacy.\n\nOption B: Monitor broad behaviour patterns (£1,000). Catch more potential problems but raise privacy concerns.",
+          "choices": [
+            {"text": "Strict privacy-first monitoring","effects":{"impact":10,"inclusivity":15,"trust":16,"budget":-3000}},
+            {"text": "Broad behaviour monitoring","effects":{"impact":14,"inclusivity":8,"trust":-10,"budget":-1000}}
+          ]
+        },
+        {
+          "id": "as-transparency",
+          "title": "Stage 2: Transparency to Stakeholders",
+          "description": "How open are you?\n\nOption A: Publish all data practices and allow opt-outs (£2,000). Builds trust but may reduce usefulness.\n\nOption B: Keep algorithms proprietary (£500). Faster innovation but invites suspicion.",
+          "choices": [
+            {"text": "Full transparency with opt-outs","effects":{"impact":10,"inclusivity":15,"trust":18,"budget":-2000}},
+            {"text": "Proprietary algorithms","effects":{"impact":14,"inclusivity":8,"trust":-12,"budget":-500}}
+          ]
+        },
+        {
+          "id": "as-accuracy",
+          "title": "Stage 3: Improving Detection Accuracy",
+          "description": "Invest in better models?\n\nOption A: Hire specialty data scientists (£7,000) to reduce false positives. Expensive but reduces harm.\n\nOption B: Use off-the-shelf models (£2,000). Cheaper but less accurate.",
+          "choices": [
+            {"text": "Specialty data scientists","effects":{"impact":16,"inclusivity":14,"trust":14,"budget":-7000}},
+            {"text": "Off-the-shelf models","effects":{"impact":12,"inclusivity":10,"trust":8,"budget":-2000}}
+          ]
+        },
+        {
+          "id": "as-governance",
+          "title": "Stage 4: Oversight and Appeals",
+          "description": "Who reviews flagged cases?\n\nOption A: Create independent oversight board with parents and ethics experts (£3,500). Adds credibility but slows response.\n\nOption B: Keep review internal (£1,000). Faster but less trusted.",
+          "choices": [
+            {"text": "Independent oversight board","effects":{"impact":12,"inclusivity":17,"trust":17,"budget":-3500}},
+            {"text": "Internal review only","effects":{"impact":14,"inclusivity":8,"trust":10,"budget":-1000}}
+          ]
+        },
+        {
+          "id": "as-training",
+          "title": "Stage 5: Teacher and Staff Training",
+          "description": "Decide how much training to provide to interpret alerts.\n\nOption A: Extensive training program (£4,000). Reduces misuse but costs time.\n\nOption B: Basic quick-start guides (£800). Faster but risks misinterpretation.",
+          "choices": [
+            {"text": "Extensive training program","effects":{"impact":13,"inclusivity":12,"trust":15,"budget":-4000}},
+            {"text": "Basic quick-start guides","effects":{"impact":10,"inclusivity":10,"trust":10,"budget":-800}}
+          ]
+        },
+        {
+          "id": "as-privacy",
+          "title": "Stage 6: Data Retention and Privacy",
+          "description": "How long do you keep data?\n\nOption A: Retain minimal data for 30 days (£2,500). Limits privacy risk.\n\nOption B: Keep data indefinitely for research (£1,000). Useful but privacy-invasive.",
+          "choices": [
+            {"text": "Retain minimal 30-day data","effects":{"impact":12,"inclusivity":15,"trust":14,"budget":-2500}},
+            {"text": "Indefinite data retention","effects":{"impact":14,"inclusivity":8,"trust":-10,"budget":-1000}}
+          ]
+        },
+        {
+          "id": "as-community",
+          "title": "Stage 7: Community Feedback Mechanism",
+          "description": "How do users influence the product?\n\nOption A: Build robust feedback portal with dashboards (£3,000). Encourages engagement but resource-heavy.\n\nOption B: Use periodic surveys (£600). Cheaper but less interactive.",
+          "choices": [
+            {"text": "Robust feedback portal","effects":{"impact":12,"inclusivity":17,"trust":16,"budget":-3000}},
+            {"text": "Periodic surveys","effects":{"impact":10,"inclusivity":12,"trust":10,"budget":-600}}
+          ]
+        }
+      ]
+    }
+  ]
+}
+

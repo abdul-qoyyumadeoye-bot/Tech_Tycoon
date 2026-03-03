@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Results</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/avatars.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="topnav-content">
+      <h1>⚡ TechTycoon Simulator</h1>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 100%;"></div>
+      </div>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+    </div>
+  </nav>
+
+  <!-- Accessibility Panel -->
+  <div id="accessibility-panel" style="display: none;">
+    <label>
+      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+    </label>
+    <label>
+      <input type="checkbox" id="big-text-toggle"> Large Text
+    </label>
+    <label>
+      <input type="checkbox" id="tts-toggle"> Text-to-Speech
+    </label>
+    <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="results-container">
+      <h2 class="results-title">Game Complete!</h2>
+      
+      <div id="results-message" class="results-message">
+        <!-- Results message will be inserted here -->
+      </div>
+      
+      <div class="Final-scores-grid">
+        <div class="score-card">
+          <div class="score-label">Impact</div>
+          <div class="score-value" id="final-impact">50</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Inclusivity</div>
+          <div class="score-value" id="final-inclusivity">50</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Trust</div>
+          <div class="score-value" id="final-trust">50</div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Budget Remaining</div>
+          <div class="score-value budget" id="final-budget">£100,000</div>
+        </div>
+      </div>
+      
+      <div class="reflection-section">
+        <div class="reflection-title">Reflection Questions</div>
+        <ul class="reflection-questions" id="reflection-questions">
+          <!-- Reflection questions will be inserted here -->
+        </ul>
+      </div>
+      
+      <div id="summary-section" style="margin: 24px 0; padding: 16px; background: #f0f9ff; border-radius: 8px;">
+        <h3 style="margin-top: 0;">Your Decisions</h3>
+        <div id="decisions-summary"></div>
+      </div>
+      
+      <div class="button-group">
+        <button class="btn btn-success" onclick="saveResults()">💾 Save Results</button>
+        <button class="btn btn-secondary" onclick="downloadResults()">📥 Download as CSV</button>
+        <button class="btn btn-primary" onclick="startNewGame()">🔄 Play Again</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="nav-footer">
+    <!-- footer intentionally left blank; buttons already in content -->
+  </footer>
+
+
+  <script src="js/gameState.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/results.js"></script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+/* ============================================================================
+   TECHGRINE AVATAR AND COMPONENT STYLING
+   For role, team member, and problem selection screens
+   ============================================================================ */
+
+:root {
+  --primary-color: #3b82f6;
+  --primary-dark: #2563eb;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --neutral-light: #f3f4f6;
+  --neutral-medium: #d1d5db;
+  --neutral-dark: #4b5563;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* ============================================================================
+   AVATAR CARDS (for roles and team members)
+   ============================================================================ */
+.avatar-container {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.avatar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  position: relative;
+  min-height: 220px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+.avatar-card:focus-within {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.avatar-card input[type="radio"],
+.avatar-card input[type="checkbox"] {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.avatar-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #06b6d4 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.avatar-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 8px 0 8px 0;
+}
+
+.avatar-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.avatar-card.selected {
+  background: #dbeafe;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.avatar-card.selected .avatar-icon {
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* ============================================================================
+   PROBLEM SELECTION CARDS
+   ============================================================================ */
+.problem-grid {
+  display: grid;
+  gap: 24px;
+  padding: 24px;
+}
+
+.problem-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.problem-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+.problem-card:focus-within {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.problem-card input[type="radio"] {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.problem-card.selected {
+  background: #dbeafe;
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
+}
+
+.problem-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.problem-theme {
+  font-size: 14px;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.problem-description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================================================
+   STAGE PRESENTATION
+   ============================================================================ */
+.stage-container {
+  padding: 32px;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.stage-header {
+  margin-bottom: 28px;
+}
+
+.stage-number {
+  font-size: 12px;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.stage-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+}
+
+.stage-description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.choices-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.choice-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.choice-card:hover {
+  background: #f3f4f6;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.choice-card:focus-within {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.choice-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.choice-impacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 8px;
+  font-size: 12px;
+}
+
+.impact-badge {
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.impact-badge.positive {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.impact-badge.negative {
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+/* ============================================================================
+   RESULTS PAGE
+   ============================================================================ */
+.results-container {
+  padding: 32px;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.results-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.results-message {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.Final-scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.score-card {
+  padding: 20px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.score-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.score-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.score-value.budget {
+  color: var(--primary-color);
+}
+
+.reflection-section {
+  background: #f0f9ff;
+  border-left: 4px solid var(--primary-color);
+  padding: 20px;
+  border-radius: 4px;
+  margin: 24px 0;
+}
+
+.reflection-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.reflection-questions {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reflection-questions li {
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.reflection-questions li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* ============================================================================
+   ACTION BUTTONS
+   ============================================================================ */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.3);
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  background: var(--neutral-light);
+  color: var(--text-primary);
+  border: 2px solid var(--neutral-medium);
+}
+
+.btn-secondary:hover {
+  background: var(--neutral-medium);
+  border-color: var(--neutral-dark);
+}
+
+.btn-success {
+  background: var(--success-color);
+  color: white;
+}
+
+.btn-success:hover {
+  background: #059669;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-large {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 1024px) {
+  .avatar-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  
+  .problem-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .avatar-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  
+  .avatar-card {
+    padding: 16px 12px;
+    min-height: 180px;
+  }
+  
+  .avatar-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  
+  .avatar-name {
+    font-size: 14px;
+  }
+  
+  .avatar-description {
+    font-size: 12px;
+  }
+  
+  .problem-card {
+    padding: 20px;
+  }
+  
+  .problem-title {
+    font-size: 18px;
+  }
+  
+  .stage-title {
+    font-size: 24px;
+  }
+  
+  .Final-scores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .problem-card {
+    padding: 16px;
+  }
+  
+  .results-container {
+    padding: 16px;
+  }
+  
+  .Final-scores-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================================================
+   HIGH CONTRAST MODE
+   ============================================================================ */
+body.high-contrast .avatar-card,
+body.high-contrast .problem-card,
+body.high-contrast .choice-card,
+body.high-contrast .stage-container,
+body.high-contrast .score-card {
+  background: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+body.high-contrast .avatar-card:hover {
+  border-color: #ffff00;
+  background: #1a1a1a;
+}
+
+body.high-contrast .avatar-card.selected {
+  background: #1a1a1a;
+  border-color: #ffff00;
+}
+
+body.high-contrast .avatar-name,
+body.high-contrast .problem-title,
+body.high-contrast .stage-title,
+body.high-contrast .choice-text,
+body.high-contrast .score-label {
+  color: #ffffff;
+}
+
+body.high-contrast .avatar-description,
+body.high-contrast .stage-description,
+body.high-contrast .problem-description,
+body.high-contrast .results-message {
+  color: #cccccc;
+}
+
+body.high-contrast .impact-badge.positive {
+  background: #006600;
+  color: #ffff00;
+}
+
+body.high-contrast .impact-badge.negative {
+  background: #660000;
+  color: #ff6666;
+}
+
+body.high-contrast .reflection-section {
+  background: #1a1a1a;
+  border-color: #ffff00;
+}
+
+body.high-contrast .btn-primary {
+  background: #ffff00;
+  color: #000000;
+}
+
+body.high-contrast .btn-primary:hover {
+  background: #ffffff;
+  border: 2px solid #000000;
+}
+
+/* ============================================================================
+   BIG TEXT MODE
+   ============================================================================ */
+body.big-text {
+  font-size: 18px;
+}
+
+body.big-text .avatar-name {
+  font-size: 18px;
+}
+
+body.big-text .avatar-description {
+  font-size: 14px;
+}
+
+body.big-text .problem-title {
+  font-size: 28px;
+}
+
+body.big-text .stage-title {
+  font-size: 32px;
+}
+
+body.big-text .choice-text {
+  font-size: 18px;
+}
+
+body.big-text .btn {
+  padding: 16px 32px;
+  font-size: 18px;
+}

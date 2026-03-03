@@ -1,0 +1,136 @@
+{
+  "problems": [
+    {
+      "id": "accessibility-gap",
+      "title": "Student Accessibility Gap",
+      "theme": "Digital inclusivity in educational apps",
+      "stages": [
+        {
+          "id": "build",
+          "title": "Stage 1 — Build Decision",
+          "description": "Choose initial trade-offs during product build.",
+          "choices": [
+            {"text":"Prioritise accessibility from day one","effects":{"impact":5,"inclusivity":15,"trust":5,"budget":-20}},
+            {"text":"Ship fast with core features only","effects":{"impact":10,"inclusivity":-10,"trust":-5,"budget":-5}}
+          ]
+        },
+        {
+          "id": "launch",
+          "title": "Stage 2 — Launch Decision",
+          "description": "How do you approach the public launch?",
+          "choices": [
+            {"text":"Include accessibility testing in launch","effects":{"impact":5,"inclusivity":10,"trust":5,"budget":-15}},
+            {"text":"Soft-launch to a beta group to iterate","effects":{"impact":8,"inclusivity":0,"trust":3,"budget":-8}}
+          ]
+        },
+        {
+          "id": "crisis",
+          "title": "Stage 3 — Accessibility Complaint",
+          "description": "A student reports the app doesn’t work with screen readers.",
+          "choices": [
+            {"text":"Fix properly (full accessible rebuild)","effects":{"impact":0,"inclusivity":15,"trust":10,"budget":-30}},
+            {"text":"Minor patch to meet complaints","effects":{"impact":0,"inclusivity":5,"trust":0,"budget":-10}},
+            {"text":"Ignore for now","effects":{"impact":0,"inclusivity":-10,"trust":-15,"budget":0}}
+          ]
+        },
+        {
+          "id": "growth",
+          "title": "Stage 4 — Growth Decision",
+          "description": "Decide how to scale the product responsibly.",
+          "choices": [
+            {"text":"Invest in localisation & accessibility","effects":{"impact":10,"inclusivity":10,"trust":5,"budget":-25}},
+            {"text":"Focus on aggressive growth (ads/virality)","effects":{"impact":15,"inclusivity":-5,"trust":-5,"budget":-10}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "privacy-tradeoff",
+      "title": "Data Privacy vs Personalisation",
+      "theme": "Digital responsibility and trust",
+      "stages": [
+        {
+          "id": "build",
+          "title": "Stage 1 — Build Decision",
+          "description": "Design choice for user data handling.",
+          "choices": [
+            {"text":"Use minimal personal data","effects":{"impact":5,"inclusivity":5,"trust":10,"budget":-10}},
+            {"text":"Collect data for rich personalisation","effects":{"impact":15,"inclusivity":0,"trust":-10,"budget":-5}}
+          ]
+        },
+        {
+          "id": "launch",
+          "title": "Stage 2 — Launch Decision",
+          "description": "Decide your privacy-first stance.",
+          "choices": [
+            {"text":"Publish clear privacy policy & opt-ins","effects":{"impact":5,"inclusivity":5,"trust":10,"budget":-8}},
+            {"text":"Default opt-in for features","effects":{"impact":10,"inclusivity":-5,"trust":-8,"budget":-3}}
+          ]
+        },
+        {
+          "id": "crisis",
+          "title": "Stage 3 — Data Leak",
+          "description": "A minor data leak affects a subset of users.",
+          "choices": [
+            {"text":"Fully disclose + compensate","effects":{"impact":-5,"inclusivity":5,"trust":15,"budget":-25}},
+            {"text":"Downplay and fix quietly","effects":{"impact":0,"inclusivity":0,"trust":-15,"budget":-10}},
+            {"text":"Ignore and move on","effects":{"impact":0,"inclusivity":-5,"trust":-25,"budget":0}}
+          ]
+        },
+        {
+          "id": "growth",
+          "title": "Stage 4 — Growth Decision",
+          "description": "How do you monetise responsibly?",
+          "choices": [
+            {"text":"Paid premium with privacy intact","effects":{"impact":5,"inclusivity":-5,"trust":10,"budget":10}},
+            {"text":"Ad-funded free product","effects":{"impact":10,"inclusivity":0,"trust":-10,"budget":20}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ux-barrier",
+      "title": "Usability Barrier for Diverse Learners",
+      "theme": "Inclusive UX in educational technology",
+      "stages": [
+        {
+          "id": "build",
+          "title": "Stage 1 — Build Decision",
+          "description": "Which components get the most resources?",
+          "choices": [
+            {"text":"Invest in clear UX and testing","effects":{"impact":5,"inclusivity":10,"trust":5,"budget":-15}},
+            {"text":"Prioritise backend features","effects":{"impact":10,"inclusivity":-5,"trust":0,"budget":-5}}
+          ]
+        },
+        {
+          "id": "launch",
+          "title": "Stage 2 — Launch Decision",
+          "description": "How to field feedback from students?",
+          "choices": [
+            {"text":"Run inclusive pilot with diverse students","effects":{"impact":5,"inclusivity":10,"trust":5,"budget":-12}},
+            {"text":"Launch broadly and A/B test","effects":{"impact":12,"inclusivity":-3,"trust":-2,"budget":-6}}
+          ]
+        },
+        {
+          "id": "crisis",
+          "title": "Stage 3 — Accessibility Complaint",
+          "description": "Multiple students report navigation issues.",
+          "choices": [
+            {"text":"Redesign navigation for accessibility","effects":{"impact":0,"inclusivity":15,"trust":10,"budget":-28}},
+            {"text":"Add small helper text and tutorials","effects":{"impact":0,"inclusivity":5,"trust":2,"budget":-8}},
+            {"text":"Ignore feedback","effects":{"impact":0,"inclusivity":-12,"trust":-18,"budget":0}}
+          ]
+        },
+        {
+          "id": "growth",
+          "title": "Stage 4 — Growth Decision",
+          "description": "Select growth approach.",
+          "choices": [
+            {"text":"Partner with schools for adoption","effects":{"impact":10,"inclusivity":10,"trust":8,"budget":-20}},
+            {"text":"Scale via influencers and ads","effects":{"impact":15,"inclusivity":-5,"trust":-5,"budget":-10}}
+          ]
+        }
+      ]
+    }
+  ]
+}

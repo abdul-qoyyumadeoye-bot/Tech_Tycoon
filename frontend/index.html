@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Welcome</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/avatars.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="topnav-content">
+      <h1>⚡ TechTycoon Simulator</h1>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+    </div>
+  </nav>
+
+  <!-- Accessibility Panel -->
+  <div id="accessibility-panel" style="display: none;">
+    <label>
+      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+    </label>
+    <label>
+      <input type="checkbox" id="big-text-toggle"> Large Text
+    </label>
+    <label>
+      <input type="checkbox" id="tts-toggle"> Text-to-Speech
+    </label>
+    <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="welcome-screen">
+      <div class="welcome-content">
+        <h2>Welcome to TechTycoon</h2>
+        <p class="welcome-subtitle">An Educational Business Simulation Game</p>
+        
+        <div class="welcome-description">
+          <p>In TechTycoon, you'll lead a technical team through real-world challenges faced by tech companies serving students and schools.</p>
+          <p>You'll make critical decisions about how to:</p>
+          <ul>
+            <li>Solve technical problems</li>
+            <li>Manage limited budgets</li>
+            <li>Balance team needs with company reputation</li>
+            <li>Prioritize impact and inclusivity</li>
+          </ul>
+          <p>Your choices will determine your scores across four key metrics: <strong>Impact, Inclusivity, Trust, and Budget</strong>. Can you solve the crisis while keeping everyone satisfied?</p>
+        </div>
+
+        <div class="form-group">
+          <label for="team-name">What is your team name?</label>
+          <input type="text" id="team-name" placeholder="Enter your team name" value="Techgrine">
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="nav-footer">
+    <div class="button-group">
+      <button class="btn btn-secondary" onclick="window.location.href='how-to-play.html'">📖 How to Play</button>
+      <button class="btn btn-primary btn-large" onclick="startGame()">Begin Scenario Selection</button>
+    </div>
+  </footer>
+
+
+  <script src="js/gameState.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

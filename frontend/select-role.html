@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Select Role</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/avatars.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="topnav-content">
+      <h1>⚡ TechTycoon Simulator</h1>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 25%;"></div>
+      </div>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+    </div>
+  </nav>
+
+  <!-- Accessibility Panel -->
+  <div id="accessibility-panel" style="display: none;">
+    <label>
+      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+    </label>
+    <label>
+      <input type="checkbox" id="big-text-toggle"> Large Text
+    </label>
+    <label>
+      <input type="checkbox" id="tts-toggle"> Text-to-Speech
+    </label>
+    <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="stage-container">
+      <h2>Choose Your Leadership Role</h2>
+      <p>Select the role that will lead your technical team through this crisis. Each role brings different perspectives and expertise.</p>
+      
+      <div class="avatar-grid" id="roles-list">
+        <label class="avatar-card">
+          <input type="radio" name="role" value="developer" id="role-developer">
+          <div class="avatar-icon">💻</div>
+          <div class="avatar-name">Technical Lead</div>
+          <div class="avatar-description">Expert in coding and technical architecture. Prioritizes technical solutions and system design.</div>
+        </label>
+        
+        <label class="avatar-card">
+          <input type="radio" name="role" value="designer" id="role-designer">
+          <div class="avatar-icon">🎨</div>
+          <div class="avatar-name">Design Lead</div>
+          <div class="avatar-description">Expert in user experience and accessibility. Prioritizes user needs and inclusive design.</div>
+        </label>
+
+        <label class="avatar-card">
+          <input type="radio" name="role" value="product" id="role-product">
+          <div class="avatar-icon">📋</div>
+          <div class="avatar-name">Product Lead</div>
+          <div class="avatar-description">Focuses on strategy and user needs, balancing features with business goals.</div>
+        </label>
+
+        <label class="avatar-card">
+          <input type="radio" name="role" value="security" id="role-security">
+          <div class="avatar-icon">🔒</div>
+          <div class="avatar-name">Security Lead</div>
+          <div class="avatar-description">Ensures systems are secure, protecting data and user privacy.</div>
+        </label>
+
+        <label class="avatar-card">
+          <input type="radio" name="role" value="data" id="role-data">
+          <div class="avatar-icon">📊</div>
+          <div class="avatar-name">Data Lead</div>
+          <div class="avatar-description">Guides decisions with analytics and metrics, uncovering insights from data.</div>
+        </label>
+      </div>
+    </div>
+    
+  </main>
+
+  <footer class="nav-footer">
+    <div class="button-group">
+      <button class="btn btn-secondary" onclick="goBack()">Back</button>
+      <button class="btn btn-primary btn-large" id="continue-btn" disabled onclick="selectRole()">Select Role & Continue</button>
+    </div>
+  </footer>
+
+
+  <script src="js/gameState.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/select-role.js"></script>
+</body>
+</html>

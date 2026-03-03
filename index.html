@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Techgrine Simulator</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav class="topnav">
+		<div class="topnav-content">
+			<h1>Techgrine Simulator</h1>
+			<div class="progress-bar-container">
+				<div id="progress" class="progress-bar" aria-hidden="true"></div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="app-container">
+		<aside class="sidebar">
+			<div class="sidebar-content">
+				<h3>Team Metrics</h3>
+				<div class="metric-card">
+					<span class="metric-label">Impact</span>
+					<span id="metric-impact" class="metric-value">50</span>
+				</div>
+				<div class="metric-card">
+					<span class="metric-label">Inclusivity</span>
+					<span id="metric-inclusivity" class="metric-value">50</span>
+				</div>
+				<div class="metric-card">
+					<span class="metric-label">Trust</span>
+					<span id="metric-trust" class="metric-value">50</span>
+				</div>
+				<div class="metric-card budget-card">
+					<span class="metric-label">Budget</span>
+					<span id="metric-budget" class="metric-value">100</span>
+				</div>
+			</div>
+		</aside>
+
+		<main class="main-content">
+		<section class="screen active" data-index="0" id="welcome-screen">
+			<h2>Welcome</h2>
+			<p>Welcome to the Techgrine simulation. Click start to begin your team's journey.</p>
+			<div class="controls">
+				<button class="start-btn next-btn">Start</button>
+			</div>
+		</section>
+		<section class="screen" data-index="1" id="brief-screen">
+			<h2>Scenario Brief</h2>
+			<p id="brief-text">Loading problem...</p>
+			<div class="controls">
+				<button class="prev-btn">Back</button>
+				<button class="next-btn" data-target="problem-screen">Next</button>
+			</div>
+		</section>
+
+		<section class="screen" data-index="2" id="problem-screen">
+			<h2>Choose a Problem</h2>
+			<p id="problem-desc">A random tech-topic will be chosen for your team.</p>
+			<ul id="problem-list" class="options">
+				<!-- populated from scenarios.json -->
+			</ul>
+			<div class="controls">
+				<button class="prev-btn">Back</button>
+				<button class="next-btn">Next</button>
+			</div>
+		</section>
+
+		<section class="screen" data-index="3" id="role-screen">
+			<h2>Pick a Role</h2>
+			<p>Choose a role for this scenario.</p>
+			<div class="roles">
+				<label><input type="radio" name="role" value="developer" checked> Developer</label>
+				<label><input type="radio" name="role" value="designer"> Designer</label>
+			</div>
+			<div class="controls">
+				<button class="prev-btn">Back</button>
+				<button class="next-btn">Next</button>
+			</div>
+		</section>
+
+		<section class="screen" data-index="4" id="team-members-screen">
+			<h2>Select Your Team</h2>
+			<p id="team-members-instruction">Pick exactly 5 team members to work with you.</p>
+			<div class="member-list" id="member-list">
+				<!-- populated dynamically, simple defaults provided in JS if needed -->
+			</div>
+			<div class="controls">
+				<button class="prev-btn">Back</button>
+				<button class="next-btn" id="members-next">Next</button>
+			</div>
+		</section>
+
+		<section class="screen" data-index="5" id="stage-screen">
+			<h2 id="stage-title">Stage</h2>
+			<p id="stage-desc">Stage description here.</p>
+			<div id="stage-choices" class="choices">
+				<!-- choices rendered here -->
+			</div>
+			<div class="controls">
+				<button class="prev-btn">Back</button>
+				<button class="next-btn" id="stage-next">Next</button>
+			</div>
+		</section>
+
+		<section class="screen" data-index="6" id="results-screen">
+			<h2>Results</h2>
+			<div id="summary">
+				<p>No choices yet.</p>
+			</div>
+			<div class="controls">
+				<button class="prev-btn">Back</button>
+				<button class="restart-btn">Restart</button>
+			</div>
+		</section>
+		</main>
+	</div>
+
+	<script src="app.js"></script>
+	<button id="accessibility-toggle" aria-expanded="false" class="access-btn" title="Accessibility options">♿</button>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Brief</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/avatars.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="topnav-content">
+      <h1>⚡ TechTycoon Simulator</h1>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 20%;"></div>
+      </div>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+    </div>
+  </nav>
+
+  <!-- Accessibility Panel -->
+  <div id="accessibility-panel" style="display: none;">
+    <label>
+      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+    </label>
+    <label>
+      <input type="checkbox" id="big-text-toggle"> Large Text
+    </label>
+    <label>
+      <input type="checkbox" id="tts-toggle"> Text-to-Speech
+    </label>
+    <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div id="brief-content" class="stage-container">
+      <!-- Brief content will be inserted here by JavaScript -->
+    </div>
+    
+  </main>
+
+  <footer class="nav-footer">
+    <div class="button-group">
+      <button class="btn btn-secondary" onclick="goBack()">Back</button>
+      <button class="btn btn-primary btn-large" onclick="continueToRoles()">Continue to Role Selection</button>
+    </div>
+  </footer>
+
+
+  <script src="js/gameState.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/brief.js"></script>
+</body>
+</html>

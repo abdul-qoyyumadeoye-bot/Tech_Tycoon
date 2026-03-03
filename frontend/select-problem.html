@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Select Problem</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/avatars.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="topnav-content">
+      <h1>⚡ TechTycoon Simulator</h1>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 15%;"></div>
+      </div>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+    </div>
+  </nav>
+
+  <!-- Accessibility Panel -->
+  <div id="accessibility-panel" style="display: none;">
+    <label>
+      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+    </label>
+    <label>
+      <input type="checkbox" id="big-text-toggle"> Large Text
+    </label>
+    <label>
+      <input type="checkbox" id="tts-toggle"> Text-to-Speech
+    </label>
+    <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="stage-container">
+      <h2>Choose a Crisis Scenario</h2>
+      <p>Select one of the problems below – each play‑through shows a different set of five tech crises.</p>
+      <div id="problems-list" class="problem-grid">
+        <!-- populated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="nav-footer">
+    <div class="button-group">
+      <button class="btn btn-secondary" onclick="goBack()">Back</button>
+      <button class="btn btn-primary btn-large" id="continue-btn" disabled onclick="selectProblem()">Select & Continue</button>
+    </div>
+  </footer>
+
+  <script src="js/stageGenerator.js"></script>
+  <script src="js/gameState.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/select-problem.js"></script>
+</body>
+</html>

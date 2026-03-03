@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Select Team</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/avatars.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="topnav-content">
+      <h1>⚡ TechTycoon Simulator</h1>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: 35%;"></div>
+      </div>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+    </div>
+  </nav>
+
+  <!-- Accessibility Panel -->
+  <div id="accessibility-panel" style="display: none;">
+    <label>
+      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+    </label>
+    <label>
+      <input type="checkbox" id="big-text-toggle"> Large Text
+    </label>
+    <label>
+      <input type="checkbox" id="tts-toggle"> Text-to-Speech
+    </label>
+    <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="stage-container">
+      <h2>Assemble Your Team</h2>
+      <p>Select exactly 5 team members from the available specialists. Diversity in your team will help you see problems from different angles and find better solutions.</p>
+      
+      <div id="team-count" style="margin: 16px 0; font-weight: 600; color: #3b82f6;">
+        Members selected: <span id="count">0</span>/5
+      </div>
+      
+      <div class="avatar-grid" id="team-list">
+        <!-- Team members will be inserted here by JavaScript -->
+      </div>
+    </div>
+    
+  </main>
+
+  <footer class="nav-footer">
+    <div class="button-group">
+      <button class="btn btn-secondary" onclick="goBack()">Back</button>
+      <button class="btn btn-primary btn-large" id="continue-btn" disabled onclick="selectTeam()">Team Complete & Begin Game</button>
+    </div>
+  </footer>
+
+
+  <script src="js/gameState.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/select-team.js"></script>
+</body>
+</html>

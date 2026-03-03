@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Game Stage</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/avatars.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <div class="topnav-content">
+      <h1>⚡ TechTycoon Simulator</h1>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress" style="width: 40%;"></div>
+      </div>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+    </div>
+  </nav>
+
+  <!-- Accessibility Panel -->
+  <div id="accessibility-panel" style="display: none;">
+    <label>
+      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+    </label>
+    <label>
+      <input type="checkbox" id="big-text-toggle"> Large Text
+    </label>
+    <label>
+      <input type="checkbox" id="tts-toggle"> Text-to-Speech
+    </label>
+    <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
+  </div>
+
+  <!-- Sidebar Metrics -->
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <h3>Current Metrics</h3>
+      
+      <div class="metric-card">
+        <span class="metric-label">Impact</span>
+        <span class="metric-value" id="impact-score">50</span>
+      </div>
+      
+      <div class="metric-card">
+        <span class="metric-label">Inclusivity</span>
+        <span class="metric-value" id="inclusivity-score">50</span>
+      </div>
+      
+      <div class="metric-card">
+        <span class="metric-label">Trust</span>
+        <span class="metric-value" id="trust-score">50</span>
+      </div>
+      
+      <div class="metric-card budget-card">
+        <span class="metric-label">Budget Remaining</span>
+        <span class="metric-value" id="budget-score">£100,000</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div id="stage-content" class="stage-container">
+      <!-- Stage content will be inserted here by JavaScript -->
+    </div>
+    
+  </main>
+
+  <footer class="nav-footer">
+    <div class="button-group">
+      <button class="btn btn-secondary" id="prev-btn" onclick="prevStage()">Previous</button>
+      <button class="btn btn-primary btn-large" id="next-btn" disabled>Continue</button>
+    </div>
+  </footer>
+
+
+
+  <script src="js/gameState.js"></script>
+  <script src="js/accessibility.js"></script>
+  <!-- generator used only for safety checks when restoring a scenario -->
+  <script src="js/stageGenerator.js"></script>
+  <script src="js/stage.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechTycoon - Test Scenario Generator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f3f4f6;
+    }
+    .container {
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 { color: #3b82f6; margin-top: 0; }
+    h2 { color: #2563eb; margin-top: 24px; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; }
+    .scenario-card {
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+    .stage-card {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .choice {
+      background: white;
+      border: 1px solid #e5e7eb;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .effects {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    .positive { color: #059669; font-weight: 600; }
+    .negative { color: #dc2626; font-weight: 600; }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 8px 4px 8px 0;
+    }
+    button:hover { background: #2563eb; }
+    .input-group {
+      margin: 16px 0;
+    }
+    input[type="text"] {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 200px;
+    }
+    .info-box {
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .stat {
+      background: white;
+      border: 1px solid #d1d5db;
+      padding: 12px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .stat-label { font-size: 12px; color: #6b7280; }
+    .stat-value { font-size: 18px; font-weight: 700; color: #3b82f6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ TechTycoon: Scenario Generator Test</h1>
+    <p>Use this page to test and explore the dynamic scenario generation system.</p>
+
+    <div class="info-box">
+      <strong>ℹ️ How to Use:</strong> Click "Generate Random Scenario" to create a new scenario each time. Use "Generate Seeded Scenario" with a specific number to reproduce the same scenario multiple times.
+    </div>
+
+    <div class="input-group">
+      <label for="seed-input">Seed (optional, for reproducibility):</label><br>
+      <input type="text" id="seed-input" placeholder="Leave blank for random, or enter a number like 12345">
+    </div>
+
+    <div>
+      <button onclick="generateRandom()">🎲 Generate Random Scenario</button>
+      <button onclick="generateSeeded()">🔒 Generate Seeded Scenario</button>
+      <button onclick="generateMultiple()">📊 Generate 5 Scenarios (Seeded)</button>
+    </div>
+
+    <div id="output"></div>
+  </div>
+
+  <script src="frontend/js/stageGenerator.js"></script>
+  <script>
+    function generateRandom() {
+      const generator = new StageGenerator(null); // null = random
+      const scenario = generator.generateScenario();
+      displayScenario(scenario);
+    }
+
+    function generateSeeded() {
+      const seedInput = document.getElementById('seed-input').value;
+      const seed = seedInput ? parseInt(seedInput) : Math.floor(Math.random() * 1000000);
+      
+      const generator = new StageGenerator(seed);
+      const scenario = generator.generateScenario();
+      
+      const output = document.getElementById('output');
+      output.innerHTML = `<p><strong>Seed Used:</strong> ${seed} (copy this to reproduce the same scenario)</p>`;
+      
+      displayScenario(scenario);
+    }
+
+    function generateMultiple() {
+      const seedInput = document.getElementById('seed-input').value;
+      const baseSeed = seedInput ? parseInt(seedInput) : Math.floor(Math.random() * 1000000);
+      
+      const output = document.getElementById('output');
+      output.innerHTML = `<h2>🎲 5-Scenario Set (Seed: ${baseSeed})</h2>`;
+      output.innerHTML += `<p>To reproduce this exact set, use URL: <code>?seed=${baseSeed}</code></p>`;
+      output.innerHTML += `<p>These 5 scenarios will be shown on the scenario selection page.</p>`;
+      
+      for (let i = 0; i < 5; i++) {
+        const generator = new StageGenerator(baseSeed + i);
+        const scenario = generator.generateScenario(`scenario-${i}`);
+        output.innerHTML += `<h3>Scenario ${i + 1}</h3>`;
+        output.innerHTML += displayScenarioPreview(scenario);
+      }
+    }
+
+    function displayScenario(scenario) {
+      const output = document.getElementById('output');
+      
+      let html = `
+        <div class="scenario-card">
+          <h2>${scenario.title}</h2>
+          <p><strong>Theme:</strong> ${scenario.theme}</p>
+          <p><strong>Initial Budget:</strong> £${scenario.initialBudget.toLocaleString()}</p>
+          <p><strong>Number of Days:</strong> ${scenario.stages.length}</p>
+          
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-label">Total Days</div>
+              <div class="stat-value">${scenario.stages.length}</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Crisis Stages</div>
+              <div class="stat-value">${scenario.stages.filter(s => s.type === 'crisis').length}</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Total Choices</div>
+              <div class="stat-value">${scenario.stages.reduce((sum, s) => sum + s.choices.length, 0)}</div>
+            </div>
+          </div>
+
+          <h3>Lifecycle Breakdown</h3>
+          <ul>
+            <li>Idea: ${scenario.stages.filter(s => s.type === 'idea').length}</li>
+            <li>Build: ${scenario.stages.filter(s => s.type === 'build').length}</li>
+            <li>Launch: ${scenario.stages.filter(s => s.type === 'launch').length}</li>
+            <li>Crisis: ${scenario.stages.filter(s => s.type === 'crisis').length}</li>
+            <li>Growth: ${scenario.stages.filter(s => s.type === 'growth').length}</li>
+          </ul>
+
+          <h3>Full Stage Sequence</h3>
+      `;
+      
+      scenario.stages.forEach((stage, idx) => {
+        html += `
+          <div class="stage-card">
+            <strong>Stage ${idx + 1}: ${stage.title}</strong> <em>(${stage.type})</em><br>
+            <small>${stage.description.substring(0, 100)}...</small>
+            <div style="margin-top: 8px; border-top: 1px solid #e5e7eb; padding-top: 8px;">
+              <strong>Choices (${stage.choices.length}):</strong>
+        `;
+        
+        stage.choices.forEach((choice, cidx) => {
+          html += `<div class="choice">
+            <strong>${cidx + 1}.</strong> ${choice.text}<br>
+            <div class="effects">
+              <span class="positive">Impact: ${choice.effects.impact > 0 ? '+' : ''}${choice.effects.impact}</span> | 
+              <span class="positive">Inclusivity: ${choice.effects.inclusivity > 0 ? '+' : ''}${choice.effects.inclusivity}</span> | 
+              <span class="positive">Trust: ${choice.effects.trust > 0 ? '+' : ''}${choice.effects.trust}</span> | 
+              <span class="${choice.effects.budget > 0 ? 'positive' : 'negative'}">Budget: ${choice.effects.budget > 0 ? '+' : ''}£${choice.effects.budget.toLocaleString()}</span>
+            </div>
+          </div>`;
+        });
+        
+        html += `</div></div>`;
+      });
+      
+      html += `</div>`;
+      
+      output.innerHTML += html;
+    }
+
+    function displayScenarioPreview(scenario) {
+      const crisisStage = scenario.stages.find(s => s.type === 'crisis');
+      return `
+        <div class="scenario-card" style="margin: 12px 0;">
+          <p><strong>Days:</strong> ${scenario.stages.length} | 
+          <strong>Crisis Type:</strong> ${crisisStage ? crisisStage.title : '<span style="color:#dc2626">None</span>'}</p>
+          ${!crisisStage ? '<p style="color:#dc2626;font-weight:bold;">⚠️ No crisis stage generated!</p>' : ''}
+          <p><strong>Sequence:</strong> ${scenario.stages.map((s, idx) => `Day ${idx+1}`).join(' → ')}</p>
+        </div>
+      `;
+    }
+
+    // Initialize with a random scenario on page load
+    window.addEventListener('load', () => {
+      generateRandom();
+    });
+  </script>
+</body>
+</html>
