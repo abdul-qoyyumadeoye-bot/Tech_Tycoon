@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressEl = document.getElementById('progress');
   let current = 0;
 
+  // full pool of potential team members (used for checkbox list)
+  const fullTeamPool = [
+    'Software Engineer','Frontend Developer','Backend Developer','Full Stack Developer','Mobile App Developer','Game Developer','AI Engineer','Machine Learning Engineer','Data Scientist','Data Analyst','DevOps Engineer','Cloud Engineer','Site Reliability Engineer','QA Tester','Automation Test Engineer','Cybersecurity Specialist','Security Engineer','Privacy Engineer','Product Manager','Project Manager','Technical Program Manager','UX Designer','UI Designer','Accessibility Specialist','Interaction Designer','User Researcher','Marketing Manager','Digital Marketing Specialist','Growth Strategist','SEO Specialist','Social Media Manager','Brand Manager','Sales Manager','Partnerships Manager','Business Development Manager','Finance Manager','Operations Manager','Customer Support Lead','Community Manager','Content Creator','Technical Writer','Solutions Architect','Database Administrator','Infrastructure Engineer','Compliance Officer','Ethics Advisor'
+  ];
+
   // app data and state
   let scenarios = null;
   const gameState = {
@@ -10,12 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     problemId: null,
     roles: [],
     stageIndex: 0,
+    // scores only hold the three metrics, budget and day are tracked separately
     scores: {
-      impact: 50,
-      inclusivity: 50,
-      trust: 50,
-      budget: 100
-    }
+      impact: 0,
+      inclusivity: 0,
+      trust: 0
+    },
+    budget: 0,
+    currentDay: 0
   };
 
   // Shows a screen by id or by numeric index
@@ -55,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function clampScore(v) { return Math.max(0, Math.min(100, Math.round(v))); }
+  function roundScore(v) { return Math.round(v); }
 
   // Load scenarios.json and populate problem list
   async function loadData() {
@@ -75,10 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
       list.appendChild(li);
     });
 
-    // pick a random default problem
+    // default to first problem (no randomisation)
     if (scenarios.problems.length) {
-      const rand = Math.floor(Math.random()*scenarios.problems.length);
-      const radio = list.querySelectorAll('input[type="radio"]')[rand];
+      const radio = list.querySelectorAll('input[type="radio"]')[0];
       if (radio) radio.checked = true;
       updateProblemDesc();
     }
@@ -95,7 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (p) {
       const themeText = p.theme ? `${p.theme} — ` : '';
       desc.textContent = `${themeText}${p.title}`;
-      if (brief) brief.textContent = `Your company Techgrine is tasked with: ${p.title}.\nTheme: ${p.theme}.`;
+      if (brief) {
+        const suggestedTeam = (p.suggestedTeam || []).join(', ');
+        const launchDate = p.launchDeadline ? `<p><strong>Launch Date:</strong> ${p.launchDeadline}</p>` : '';
+        const launchDay = p.totalDays ? `<p><strong>Launch Deadline:</strong> Day ${p.totalDays}</p>` : '';
+        brief.innerHTML = `
+          <p>${p.projectBrief || `Your company Techgrine is tasked with: ${p.title}.`}</p>
+          ${launchDate}
+          ${launchDay}
+          <p><strong>Total Development Window:</strong> ${p.totalDays || 0} days</p>
+          <p><strong>Starting Budget:</strong> $${(p.startingBudget || 0).toLocaleString()}</p>
+          <p><strong>Suggested Team:</strong> ${suggestedTeam || 'Not provided'}</p>
+        `;
+      }
     }
   }
 
@@ -106,8 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('team-members-instruction').textContent = `Pick exactly 5 team members to work with you.`;
 
-    // create a named pool to choose from
-    const pool = ['Frontend Engineer','Backend Engineer','UX Designer','QA Engineer','DevOps Engineer','Accessibility Specialist','Product Manager','Data Analyst','Security Analyst'];
+    // wire up hint button (shows suggested team if available)
+    const hintBtn = document.getElementById('team-hint-btn');
+    const hintContainer = document.getElementById('team-hint');
+    hintBtn.onclick = () => {
+      const probId = document.querySelector('input[name="problem"]:checked')?.value;
+      const scenario = scenarios.problems.find(p => p.id === probId) || {};
+      const suggestions = scenario.suggestedTeam || [];
+      if (suggestions.length) {
+        hintContainer.textContent = 'Suggested team:\n' + suggestions.join(', ');
+        hintContainer.style.display = 'block';
+      } else {
+        hintContainer.textContent = 'No suggestions available for this scenario.';
+        hintContainer.style.display = 'block';
+      }
+    };
+
+    // create a named pool to choose from (full list provided globally)
+    const pool = fullTeamPool.slice();
     pool.forEach(name => {
       const lbl = document.createElement('label');
       lbl.innerHTML = `<input type="checkbox" name="member" value="${name}"> ${name}`;
@@ -148,18 +182,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const scenario = scenarios.problems.find(p=>p.id === probId);
     if (!scenario) return;
 
+    // update header info about deadline and days remaining
+    updateDeadlineInfo();
+
     const idx = gameState.stageIndex;
     const stage = scenario.stages[idx];
     if (!stage) return showScreen('results-screen');
 
     document.getElementById('stage-title').textContent = stage.title;
     document.getElementById('stage-desc').textContent = stage.description;
+    // clear any previous feedback message
+    const feedback = document.getElementById('stage-feedback');
+    if (feedback) feedback.textContent = '';
 
     const choicesEl = document.getElementById('stage-choices');
     choicesEl.innerHTML = '';
 
-    // randomise order of choices for variety
-    const choices = stage.choices.slice().sort(()=>Math.random()-0.5);
+    // keep authored order of choices
+    const choices = stage.choices.slice();
     choices.forEach((c, i) => {
       const div = document.createElement('div');
       div.className = 'choice';
@@ -187,19 +227,37 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyChoice(choice) {
     // apply deltas
     const d = choice.effects || {};
-    gameState.scores.impact = clampScore(gameState.scores.impact + (d.impact||0));
-    gameState.scores.inclusivity = clampScore(gameState.scores.inclusivity + (d.inclusivity||0));
-    gameState.scores.trust = clampScore(gameState.scores.trust + (d.trust||0));
-    // budget only decreases (effects likely negative or positive for income); enforce decrease-only
-    const newBudget = gameState.scores.budget + (d.budget||0);
-    gameState.scores.budget = Math.max(0, Math.min(1000, Math.round(newBudget)));
+    gameState.scores.impact = roundScore(gameState.scores.impact + (d.impact||0));
+    gameState.scores.inclusivity = roundScore(gameState.scores.inclusivity + (d.inclusivity||0));
+    gameState.scores.trust = roundScore(gameState.scores.trust + (d.trust||0));
+    // update budget (effects expressed in actual dollars)
+    gameState.budget = Math.max(0, gameState.budget + (d.budget||0));
+
+    // increment current day by stage time (if defined)
+    const probId = document.querySelector('input[name="problem"]:checked')?.value;
+    const scenario = scenarios.problems.find(p=>p.id === probId) || {};
+    const stage = scenario.stages[gameState.stageIndex] || {};
+    if (stage.time) {
+      gameState.currentDay += stage.time;
+    }
 
     updateDashboard();
 
-    // advance stage
+    // check deadline before advancing to next stage
+    if (scenario.totalDays && gameState.currentDay >= scenario.totalDays) {
+      showDeadlineExceeded();
+      return;
+    }
+
+    // show feedback about days remaining
+    const remaining = (scenario.totalDays||0) - gameState.currentDay;
+    const feedback = document.getElementById('stage-feedback');
+    if (feedback) {
+      feedback.textContent = `Current Day: Day ${gameState.currentDay} | Days remaining after this stage: ${remaining>0?remaining:0}`;
+    }
+
+    // advance stage index and continue
     gameState.stageIndex += 1;
-    const probId = document.querySelector('input[name="problem"]:checked')?.value;
-    const scenario = scenarios.problems.find(p=>p.id === probId);
     if (gameState.stageIndex >= scenario.stages.length) {
       showScreen('results-screen');
     } else {
@@ -209,18 +267,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderResults(){
     const s = gameState.scores;
+    const totalScore = s.impact + s.inclusivity + s.trust;
     const summary = document.getElementById('summary');
     let outcome = '';
-    if (s.impact>70 && s.trust<40) outcome = 'High Impact, Low Trust — growth with reputational risk.';
-    else if (s.inclusivity>60 && s.trust>60) outcome = 'Inclusive & Trusted — responsible product.';
-    else outcome = 'Mixed results — discuss trade-offs.';
+    if (totalScore >= 150) outcome = 'Outstanding outcome — strong impact, inclusion, and trust.';
+    else if (totalScore >= 100) outcome = 'Solid outcome — good balance across key metrics.';
+    else if (totalScore >= 60) outcome = 'Moderate outcome — meaningful progress with clear trade-offs.';
+    else outcome = 'At-risk outcome — project needs stronger strategic decisions.';
 
     summary.innerHTML = `<p><strong>Company:</strong> ${gameState.teamName}</p>
       <p><strong>Final metrics</strong></p>
       <p>Impact: ${s.impact}</p>
       <p>Inclusivity: ${s.inclusivity}</p>
       <p>Trust: ${s.trust}</p>
-      <p>Budget: ${s.budget}</p>
+      <p>Total Score: ${totalScore}</p>
+      <p>Budget remaining: $${gameState.budget.toLocaleString()}</p>
+      <p>Days used: ${gameState.currentDay}</p>
       <p><em>${outcome}</em></p>
       <h4>Reflection</h4>
       <ul>
@@ -235,7 +297,46 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('metric-impact').textContent = `Impact: ${gameState.scores.impact}`;
     document.getElementById('metric-inclusivity').textContent = `Inclusivity: ${gameState.scores.inclusivity}`;
     document.getElementById('metric-trust').textContent = `Trust: ${gameState.scores.trust}`;
-    document.getElementById('metric-budget').textContent = `Budget: ${gameState.scores.budget}`;
+    document.getElementById('metric-budget').textContent = `Budget: $${gameState.budget.toLocaleString()}`;
+  }
+
+  function updateDeadlineInfo() {
+    const probId = document.querySelector('input[name="problem"]:checked')?.value;
+    const scenario = scenarios.problems.find(p=>p.id === probId);
+    if (!scenario) return;
+    const infoEl = document.getElementById('deadline-info');
+    const current = gameState.currentDay;
+    const total = scenario.totalDays || 0;
+    const remaining = total - current;
+    let text = '';
+    if (total) {
+      text += `Launch Deadline: Day ${total}`;
+      if (scenario.launchDeadline) text += ` (${scenario.launchDeadline})`;
+    }
+    if (total) {
+      text += ` | Current Day: Day ${current}`;
+      text += ` | Days Remaining: ${remaining > 0 ? remaining : 0}`;
+    }
+    infoEl.textContent = text;
+  }
+
+  function showDeadlineExceeded() {
+    const probId = document.querySelector('input[name="problem"]:checked')?.value;
+    const scenario = scenarios.problems.find(p=>p.id === probId) || {};
+    const msgEl = document.getElementById('deadline-message');
+    const day = gameState.currentDay;
+    const over = day - (scenario.totalDays || 0);
+    msgEl.innerHTML = `<strong>You have run out of time!</strong><br>
+      The project deadline was Day ${scenario.totalDays || 'unknown'}${scenario.launchDeadline ? ` (${scenario.launchDeadline})` : ''}.<br>
+      Your team reached Day ${day}.${over > 0 ? ` You are ${over} day${over!==1?'s':''} past the deadline.` : ''}<br>
+      <br>
+      <strong>Project Status at Deadline</strong><br>
+      Stage completed: ${Math.min(gameState.stageIndex + 1, (scenario.stages || []).length)} of ${(scenario.stages || []).length}<br>
+      Impact: ${gameState.scores.impact} | Inclusivity: ${gameState.scores.inclusivity} | Trust: ${gameState.scores.trust}<br>
+      Budget remaining: $${gameState.budget.toLocaleString()}<br>
+      <br>
+      The school term or launch event has arrived, so this project is now closed. Review earlier stage decisions to improve time planning in your next run.`;
+    showScreen('deadline-screen');
   }
 
   // Accessibility settings
@@ -287,7 +388,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (startBtn) startBtn.addEventListener('click', () => {
     // reset state
     gameState.stageIndex = 0;
-    gameState.scores = {impact:50,inclusivity:50,trust:50,budget:100};
+    gameState.scores = {impact:0,inclusivity:0,trust:0};
+    gameState.currentDay = 0;
+    const probId = document.querySelector('input[name="problem"]:checked')?.value;
+    const scenario = scenarios.problems.find(p=>p.id===probId) || {};
+    gameState.budget = scenario.startingBudget || 0;
     updateDashboard();
     // ensure brief text is up to date before showing
     updateProblemDesc();
@@ -296,7 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (restartBtn) restartBtn.addEventListener('click', () => {
     gameState.stageIndex = 0;
-    gameState.scores = {impact:50,inclusivity:50,trust:50,budget:100};
+    gameState.scores = {impact:0,inclusivity:0,trust:0};
+    gameState.currentDay = 0;
+    gameState.budget = 0;
     updateDashboard();
     showScreen('welcome-screen');
   });

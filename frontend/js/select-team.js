@@ -3,56 +3,103 @@
 // ============================================================================
 
 const TEAM_ROLES = [
-  { value: 'frontend-engineer', name: 'Frontend Engineer', description: 'Web & UI development expert', icon: '🎨' },
-  { value: 'backend-engineer', name: 'Backend Engineer', description: 'Server & API specialist', icon: '⚙️' },
-  { value: 'ux-designer', name: 'UX Designer', description: 'User experience specialist', icon: '🎭' },
-  { value: 'qa-engineer', name: 'QA Engineer', description: 'Testing & quality assurance', icon: '✅' },
-  { value: 'devops-engineer', name: 'DevOps Engineer', description: 'Infrastructure & deployment', icon: '🚀' },
-  { value: 'accessibility-specialist', name: 'Accessibility Specialist', description: 'Inclusive design expert', icon: '♿' },
-  { value: 'product-manager', name: 'Product Manager', description: 'Strategy & priorities', icon: '📋' },
-  { value: 'data-analyst', name: 'Data Analyst', description: 'Analytics & insights', icon: '📊' },
-  { value: 'security-specialist', name: 'Security Specialist', description: 'Security & compliance', icon: '🔒' },
-  { value: 'ai-researcher', name: 'AI Researcher', description: 'Machine learning and algorithm expert', icon: '🤖' },
-  { value: 'cloud-architect', name: 'Cloud Architect', description: 'Designs scalable cloud infrastructure', icon: '☁️' },
-  { value: 'mobile-developer', name: 'Mobile Developer', description: 'Optimises apps for phones and tablets', icon: '📱' }
+  'Software Engineer',
+  'Frontend Developer',
+  'Backend Developer',
+  'Full Stack Developer',
+  'Mobile App Developer',
+  'Game Developer',
+  'AI Engineer',
+  'Machine Learning Engineer',
+  'Data Scientist',
+  'Data Analyst',
+  'DevOps Engineer',
+  'Cloud Engineer',
+  'Site Reliability Engineer',
+  'QA Tester',
+  'Automation Test Engineer',
+  'Cybersecurity Specialist',
+  'Security Engineer',
+  'Privacy Engineer',
+  'Product Manager',
+  'Project Manager',
+  'Technical Program Manager',
+  'UX Designer',
+  'UI Designer',
+  'Accessibility Specialist',
+  'Interaction Designer',
+  'User Researcher',
+  'Marketing Manager',
+  'Digital Marketing Specialist',
+  'Growth Strategist',
+  'SEO Specialist',
+  'Social Media Manager',
+  'Brand Manager',
+  'Sales Manager',
+  'Partnerships Manager',
+  'Business Development Manager',
+  'Finance Manager',
+  'Operations Manager',
+  'Customer Support Lead',
+  'Community Manager',
+  'Content Creator',
+  'Technical Writer',
+  'Solutions Architect',
+  'Database Administrator',
+  'Infrastructure Engineer',
+  'Compliance Officer',
+  'Ethics Advisor'
 ];
 
 function renderTeamMembers() {
   const container = document.getElementById('team-list');
-  
-  container.innerHTML = TEAM_ROLES.map(role => `
+
+  container.innerHTML = TEAM_ROLES.map((name) => `
     <label class="avatar-card">
-      <input type="checkbox" name="team-member" value="${role.value}" onchange="updateTeamCount()">
-      <div class="avatar-icon">${role.icon}</div>
-      <div class="avatar-name">${role.name}</div>
-      <div class="avatar-description">${role.description}</div>
+      <input type="checkbox" name="team-member" value="${name}" onchange="updateTeamCount()">
+      <div class="avatar-name">${name}</div>
     </label>
   `).join('');
 }
 
 function updateTeamCount() {
-  const selected = document.querySelectorAll('input[name="team-member"]:checked').length;
-  document.getElementById('count').textContent = selected;
-  
+  const selectedInputs = Array.from(document.querySelectorAll('input[name="team-member"]:checked'));
+  const selectedCount = selectedInputs.length;
+  document.getElementById('count').textContent = selectedCount;
+
+  // Max 5 members allowed.
+  if (selectedCount > 5) {
+    selectedInputs[selectedInputs.length - 1].checked = false;
+  }
+
+  const currentCount = document.querySelectorAll('input[name="team-member"]:checked').length;
   const continueBtn = document.getElementById('continue-btn');
-  continueBtn.disabled = selected !== 5;
-  
-  // Update visual state
+  continueBtn.disabled = !(currentCount === 4 || currentCount === 5);
+
   document.querySelectorAll('.avatar-card').forEach(card => {
     const input = card.querySelector('input[type="checkbox"]');
-    if (input && input.checked) {
-      card.classList.add('selected');
-    } else {
-      card.classList.remove('selected');
-    }
+    card.classList.toggle('selected', Boolean(input && input.checked));
   });
+}
+
+function showSuggestedTeam() {
+  const hint = document.getElementById('team-hint');
+  const suggested = gameState.data.problem?.suggestedTeam || [];
+  if (!hint) return;
+
+  if (suggested.length) {
+    hint.innerHTML = `<strong>Suggested Team:</strong> ${suggested.join(', ')}`;
+  } else {
+    hint.textContent = 'No suggested team provided for this scenario.';
+  }
+  hint.style.display = 'block';
 }
 
 function selectTeam() {
   const selected = Array.from(document.querySelectorAll('input[name="team-member"]:checked')).map(cb => cb.value);
-  
-  if (selected.length !== 5) {
-    alert('Please select exactly 5 team members.');
+
+  if (!(selected.length === 4 || selected.length === 5)) {
+    alert('Please select 4 or 5 team members.');
     return;
   }
 
@@ -60,7 +107,7 @@ function selectTeam() {
   window.location.href = 'stage.html';
 }
 
-// Initialize page
 document.addEventListener('DOMContentLoaded', () => {
   renderTeamMembers();
+  document.getElementById('team-hint-btn')?.addEventListener('click', showSuggestedTeam);
 });

@@ -21,15 +21,20 @@ function renderBrief() {
       </div>
       <h2>${problem.title}</h2>
       <div style="background: #f0f9ff; padding: 24px; border-radius: 8px; border-left: 4px solid #3b82f6; margin: 24px 0; line-height: 1.8;">
-        ${problem.briefDescription.split('\n').map(para => `<p style="margin: 0 0 16px 0;">${para}</p>`).join('')}
+        ${(problem.projectBrief || '').split('\n').map(para => `<p style="margin: 0 0 16px 0;">${para}</p>`).join('')}
       </div>
       <div style="margin-top: 32px;">
-        <h3>Your Objective</h3>
-        <p>${problem.objectives}</p>
+        <h3>Launch Details</h3>
+        <p><strong>Launch Deadline:</strong> Day ${problem.totalDays || 0} ${problem.launchDeadline ? `(${problem.launchDeadline})` : ''}</p>
+        <p><strong>Total Development Window:</strong> ${problem.totalDays || 0} days</p>
       </div>
       <div style="margin-top: 24px; padding: 16px; background: #fef3c7; border-radius: 6px;">
-        <strong>Starting Budget: £${problem.initialBudget.toLocaleString()}</strong>
+        <strong>Starting Budget: $${(problem.startingBudget || 0).toLocaleString()}</strong>
         <p style="margin: 8px 0 0 0; font-size: 14px;">This is the total amount you have to resolve this crisis. Spend wisely.</p>
+      </div>
+      <div style="margin-top: 24px; padding: 16px; background: #f3f4f6; border-radius: 6px;">
+        <strong>Suggested Team:</strong>
+        <p style="margin: 8px 0 0 0; font-size: 14px;">${(problem.suggestedTeam || []).join(', ')}</p>
       </div>
     </div>
   `;
@@ -37,8 +42,8 @@ function renderBrief() {
   document.getElementById('brief-content').innerHTML = html;
 }
 
-function continueToRoles() {
-  window.location.href = 'select-role.html';
+function continueToTeam() {
+  window.location.href = 'select-team.html';
 }
 
 // Initialize page

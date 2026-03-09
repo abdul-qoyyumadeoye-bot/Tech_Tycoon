@@ -33,35 +33,17 @@
     <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
   </div>
 
-  <!-- Sidebar Metrics -->
-  <aside class="sidebar">
-    <div class="sidebar-content">
-      <h3>Current Metrics</h3>
-      
-      <div class="metric-card">
-        <span class="metric-label">Impact</span>
-        <span class="metric-value" id="impact-score">50</span>
-      </div>
-      
-      <div class="metric-card">
-        <span class="metric-label">Inclusivity</span>
-        <span class="metric-value" id="inclusivity-score">50</span>
-      </div>
-      
-      <div class="metric-card">
-        <span class="metric-label">Trust</span>
-        <span class="metric-value" id="trust-score">50</span>
-      </div>
-      
-      <div class="metric-card budget-card">
-        <span class="metric-label">Budget Remaining</span>
-        <span class="metric-value" id="budget-score">£100,000</span>
-      </div>
-    </div>
-  </aside>
-
   <!-- Main Content -->
-  <main class="main-container">
+  <main class="main-container stage-main">
+    <section id="deadline-strip" style="width: 100%; margin-bottom: 10px; padding: 12px 16px; border-radius: 8px; background: #fff7ed; border-left: 4px solid #f97316; font-weight: 700;">
+      Launch Deadline: Day 0 | Current Day: Day 0 | Days Remaining: 0
+    </section>
+    <section class="score-strip" style="display:grid; grid-template-columns: repeat(4, minmax(140px, 1fr)); gap:10px; width:100%; margin-bottom:12px;">
+      <div class="metric-card"><span class="metric-label">Impact</span><span class="metric-value" id="impact-score">0</span></div>
+      <div class="metric-card"><span class="metric-label">Inclusivity</span><span class="metric-value" id="inclusivity-score">0</span></div>
+      <div class="metric-card"><span class="metric-label">Trust</span><span class="metric-value" id="trust-score">0</span></div>
+      <div class="metric-card budget-card"><span class="metric-label">Budget Remaining</span><span class="metric-value" id="budget-score">$0</span></div>
+    </section>
     <div id="stage-content" class="stage-container">
       <!-- Stage content will be inserted here by JavaScript -->
     </div>

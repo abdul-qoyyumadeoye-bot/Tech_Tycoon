@@ -26,14 +26,16 @@ class GameState {
       teamMembers: [],
       stageIndex: 0,
       totalStages: 0,
+      currentDay: 0,
+      totalDays: 0,
       gameStatus: 'in-progress', // 'in-progress', 'complete', 'incomplete'
       scores: {
-        impact: 50,
-        inclusivity: 50,
-        trust: 50,
-        budget: 100000
+        impact: 0,
+        inclusivity: 0,
+        trust: 0,
+        budget: 0
       },
-      initialBudget: 100000,
+      initialBudget: 0,
       choices: [],
       startTime: null,
       endTime: null
@@ -85,10 +87,11 @@ class GameState {
   }
 
   applyChoiceEffects(effects) {
-    this.data.scores.impact = Math.max(0, Math.min(100, this.data.scores.impact + effects.impact));
-    this.data.scores.inclusivity = Math.max(0, Math.min(100, this.data.scores.inclusivity + effects.inclusivity));
-    this.data.scores.trust = Math.max(0, Math.min(100, this.data.scores.trust + effects.trust));
-    this.data.scores.budget = Math.max(0, this.data.scores.budget + effects.budget);
+    // Core metrics are intentionally capped at 99 so a perfect 100 is impossible.
+    this.data.scores.impact = Math.max(0, Math.min(99, this.data.scores.impact + (effects.impact || 0)));
+    this.data.scores.inclusivity = Math.max(0, Math.min(99, this.data.scores.inclusivity + (effects.inclusivity || 0)));
+    this.data.scores.trust = Math.max(0, Math.min(99, this.data.scores.trust + (effects.trust || 0)));
+    this.data.scores.budget = Math.max(0, this.data.scores.budget + (effects.budget || 0));
     this.save();
   }
 

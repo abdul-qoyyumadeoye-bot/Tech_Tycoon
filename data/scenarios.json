@@ -1,133 +1,179 @@
 {
   "problems": [
     {
-      "id": "accessibility-gap",
-      "title": "Student Accessibility Gap",
-      "theme": "Digital inclusivity in educational apps",
+      "id": "studybuddy",
+      "title": "StudyBuddy AI Homework Planner",
+      "theme": "Educational productivity",
+      "projectBrief": "Schools increasingly assign homework across multiple digital platforms, making it difficult for students to keep track of tasks and deadlines. StudyBuddy solves this by creating an AI-powered planner that automatically collects assignments from different systems and organises them into a personalised study schedule. The app also provides reminders, progress tracking, and accessibility features for students with different learning needs. The goal is to launch a minimum viable product (MVP) before the new school term begins.",
+      "launchDeadline": "August 1",
+      "totalDays": 45,
+      "startingBudget": 120000,
+      "suggestedTeam": [
+        "Product Manager",
+        "Software Engineer",
+        "UX Designer",
+        "Data Scientist",
+        "QA Tester",
+        "Marketing Manager"
+      ],
       "stages": [
         {
-          "id": "build",
-          "title": "Stage 1 — Build Decision",
-          "description": "Choose initial trade-offs during product build.",
+          "id": "market-research",
+          "title": "Stage 1 — Market Research",
+          "time": 4,
+          "description": "You must decide how to validate the idea with students.",
           "choices": [
-            {"text":"Prioritise accessibility from day one","effects":{"impact":5,"inclusivity":15,"trust":5,"budget":-20}},
-            {"text":"Ship fast with core features only","effects":{"impact":10,"inclusivity":-10,"trust":-5,"budget":-5}}
+            {"text":"Conduct detailed surveys in 5 schools","effects":{"impact":8,"inclusivity":6,"trust":5,"budget":-6000}},
+            {"text":"Skip research and start building immediately","effects":{"impact":3,"inclusivity":-2,"trust":-4,"budget":-1000}}
           ]
         },
         {
-          "id": "launch",
-          "title": "Stage 2 — Launch Decision",
-          "description": "How do you approach the public launch?",
+          "id": "core-development",
+          "title": "Stage 2 — Core System Development",
+          "time": 8,
+          "description": "The team begins building the core scheduling engine.",
           "choices": [
-            {"text":"Include accessibility testing in launch","effects":{"impact":5,"inclusivity":10,"trust":5,"budget":-15}},
-            {"text":"Soft-launch to a beta group to iterate","effects":{"impact":8,"inclusivity":0,"trust":3,"budget":-8}}
+            {"text":"Build an AI-powered scheduling system","effects":{"impact":15,"inclusivity":3,"trust":2,"budget":-28000}},
+            {"text":"Build a simple manual planner","effects":{"impact":8,"inclusivity":5,"trust":4,"budget":-12000}}
           ]
         },
         {
-          "id": "crisis",
-          "title": "Stage 3 — Accessibility Complaint",
-          "description": "A student reports the app doesn’t work with screen readers.",
+          "id": "ux-design",
+          "title": "Stage 3 — User Experience Design",
+          "time": 6,
+          "description": "The UX team works on improving usability.",
           "choices": [
-            {"text":"Fix properly (full accessible rebuild)","effects":{"impact":0,"inclusivity":15,"trust":10,"budget":-30}},
-            {"text":"Minor patch to meet complaints","effects":{"impact":0,"inclusivity":5,"trust":0,"budget":-10}},
-            {"text":"Ignore for now","effects":{"impact":0,"inclusivity":-10,"trust":-15,"budget":0}}
+            {"text":"Inclusive design testing with diverse students","effects":{"impact":7,"inclusivity":12,"trust":6,"budget":-10000}},
+            {"text":"Basic interface with minimal testing","effects":{"impact":3,"inclusivity":3,"trust":1,"budget":-4000}}
           ]
         },
         {
-          "id": "growth",
-          "title": "Stage 4 — Growth Decision",
-          "description": "Decide how to scale the product responsibly.",
+          "id": "accessibility-complaint",
+          "title": "Stage 4 — Unexpected Issue: Accessibility Complaint",
+          "time": 3,
+          "description": "During testing, visually impaired students report difficulty navigating the interface.",
           "choices": [
-            {"text":"Invest in localisation & accessibility","effects":{"impact":10,"inclusivity":10,"trust":5,"budget":-25}},
-            {"text":"Focus on aggressive growth (ads/virality)","effects":{"impact":15,"inclusivity":-5,"trust":-5,"budget":-10}}
+            {"text":"Fully redesign accessibility features","effects":{"impact":5,"inclusivity":15,"trust":12,"budget":-12000}},
+            {"text":"Apply a quick patch","effects":{"impact":2,"inclusivity":6,"trust":5,"budget":-4000}}
+          ]
+        },
+        {
+          "id": "security-review",
+          "title": "Stage 5 — Security & Privacy Review",
+          "time": 4,
+          "description": "Your app stores personal student data, raising privacy concerns.",
+          "choices": [
+            {"text":"Hire cybersecurity consultants","effects":{"impact":2,"inclusivity":1,"trust":15,"budget":-15000}},
+            {"text":"Delay security improvements","effects":{"impact":0,"inclusivity":0,"trust":-18,"budget":0}}
+          ]
+        },
+        {
+          "id": "marketing-campaign",
+          "title": "Stage 6 — Marketing Campaign",
+          "time": 7,
+          "description": "You must promote the app before launch.",
+          "choices": [
+            {"text":"Social media campaign targeting students","effects":{"impact":12,"inclusivity":3,"trust":4,"budget":-18000}},
+            {"text":"Partner with schools directly","effects":{"impact":10,"inclusivity":6,"trust":7,"budget":-14000}}
+          ]
+        },
+        {
+          "id": "final-launch",
+          "title": "Stage 7 — Final Launch Decision",
+          "time": 2,
+          "description": "The app is almost ready.",
+          "choices": [
+            {"text":"Launch on schedule","effects":{"impact":10,"inclusivity":0,"trust":5,"budget":-3000}},
+            {"text":"Delay launch to improve quality","effects":{"impact":6,"inclusivity":4,"trust":10,"budget":-7000}}
           ]
         }
       ]
     },
     {
-      "id": "privacy-tradeoff",
-      "title": "Data Privacy vs Personalisation",
-      "theme": "Digital responsibility and trust",
+      "id": "safechat",
+      "title": "SafeChat Gaming Moderation Tool",
+      "theme": "Online safety",
+      "projectBrief": "Online gaming communities often suffer from harassment and toxic behaviour, making them unsafe for younger players. SafeChat is a moderation platform designed to detect harmful messages in real time using machine learning. The tool is offered to game developers as an API that automatically scans messages, flags harassment, and protects players. The goal is to release the first version before a major gaming convention where several studios will evaluate the product.",
+      "launchDeadline": "September 15",
+      "totalDays": 50,
+      "startingBudget": 150000,
+      "suggestedTeam": [
+        "AI Engineer",
+        "Cybersecurity Specialist",
+        "Backend Developer",
+        "UX Designer",
+        "Community Manager",
+        "Product Manager"
+      ],
       "stages": [
         {
-          "id": "build",
-          "title": "Stage 1 — Build Decision",
-          "description": "Design choice for user data handling.",
+          "id": "dataset",
+          "title": "Stage 1 — Dataset Collection",
+          "time": 6,
+          "description": "You must collect training data for the AI moderation system.",
           "choices": [
-            {"text":"Use minimal personal data","effects":{"impact":5,"inclusivity":5,"trust":10,"budget":-10}},
-            {"text":"Collect data for rich personalisation","effects":{"impact":15,"inclusivity":0,"trust":-10,"budget":-5}}
+            {"text":"Collect diverse datasets from multiple gaming communities","effects":{"impact":10,"inclusivity":8,"trust":7,"budget":-12000}},
+            {"text":"Use a small internal dataset","effects":{"impact":4,"inclusivity":-3,"trust":-2,"budget":-4000}}
           ]
         },
         {
-          "id": "launch",
-          "title": "Stage 2 — Launch Decision",
-          "description": "Decide your privacy-first stance.",
+          "id": "build-ai",
+          "title": "Stage 2 — Build AI Moderation System",
+          "time": 9,
+          "description": "The AI model is developed.",
           "choices": [
-            {"text":"Publish clear privacy policy & opt-ins","effects":{"impact":5,"inclusivity":5,"trust":10,"budget":-8}},
-            {"text":"Default opt-in for features","effects":{"impact":10,"inclusivity":-5,"trust":-8,"budget":-3}}
+            {"text":"Advanced AI moderation","effects":{"impact":18,"inclusivity":6,"trust":5,"budget":-35000}},
+            {"text":"Basic keyword filtering","effects":{"impact":7,"inclusivity":2,"trust":3,"budget":-10000}}
           ]
         },
         {
-          "id": "crisis",
-          "title": "Stage 3 — Data Leak",
-          "description": "A minor data leak affects a subset of users.",
+          "id": "integration",
+          "title": "Stage 3 — Platform Integration",
+          "time": 6,
+          "description": "You must integrate the system with gaming platforms.",
           "choices": [
-            {"text":"Fully disclose + compensate","effects":{"impact":-5,"inclusivity":5,"trust":15,"budget":-25}},
-            {"text":"Downplay and fix quietly","effects":{"impact":0,"inclusivity":0,"trust":-15,"budget":-10}},
-            {"text":"Ignore and move on","effects":{"impact":0,"inclusivity":-5,"trust":-25,"budget":0}}
+            {"text":"Full API integration","effects":{"impact":12,"inclusivity":3,"trust":7,"budget":-15000}},
+            {"text":"Limited integration","effects":{"impact":6,"inclusivity":2,"trust":4,"budget":-6000}}
           ]
         },
         {
-          "id": "growth",
-          "title": "Stage 4 — Growth Decision",
-          "description": "How do you monetise responsibly?",
+          "id": "bias-issue",
+          "title": "Stage 4 — Crisis: AI Bias Issue",
+          "time": 4,
+          "description": "The system incorrectly flags messages from certain dialects.",
           "choices": [
-            {"text":"Paid premium with privacy intact","effects":{"impact":5,"inclusivity":-5,"trust":10,"budget":10}},
-            {"text":"Ad-funded free product","effects":{"impact":10,"inclusivity":0,"trust":-10,"budget":20}}
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ux-barrier",
-      "title": "Usability Barrier for Diverse Learners",
-      "theme": "Inclusive UX in educational technology",
-      "stages": [
-        {
-          "id": "build",
-          "title": "Stage 1 — Build Decision",
-          "description": "Which components get the most resources?",
-          "choices": [
-            {"text":"Invest in clear UX and testing","effects":{"impact":5,"inclusivity":10,"trust":5,"budget":-15}},
-            {"text":"Prioritise backend features","effects":{"impact":10,"inclusivity":-5,"trust":0,"budget":-5}}
+            {"text":"Retrain model","effects":{"impact":5,"inclusivity":14,"trust":12,"budget":-15000}},
+            {"text":"Ignore issue","effects":{"impact":2,"inclusivity":-10,"trust":-15,"budget":0}}
           ]
         },
         {
-          "id": "launch",
-          "title": "Stage 2 — Launch Decision",
-          "description": "How to field feedback from students?",
+          "id": "security",
+          "title": "Stage 5 — Security Infrastructure",
+          "time": 5,
+          "description": "Protect the platform from attacks.",
           "choices": [
-            {"text":"Run inclusive pilot with diverse students","effects":{"impact":5,"inclusivity":10,"trust":5,"budget":-12}},
-            {"text":"Launch broadly and A/B test","effects":{"impact":12,"inclusivity":-3,"trust":-2,"budget":-6}}
+            {"text":"High-security server infrastructure","effects":{"impact":3,"inclusivity":1,"trust":15,"budget":-20000}},
+            {"text":"Basic server setup","effects":{"impact":1,"inclusivity":0,"trust":4,"budget":-8000}}
           ]
         },
         {
-          "id": "crisis",
-          "title": "Stage 3 — Accessibility Complaint",
-          "description": "Multiple students report navigation issues.",
+          "id": "partnerships",
+          "title": "Stage 6 — Industry Partnerships",
+          "time": 8,
+          "description": "Choose who to team up with.",
           "choices": [
-            {"text":"Redesign navigation for accessibility","effects":{"impact":0,"inclusivity":15,"trust":10,"budget":-28}},
-            {"text":"Add small helper text and tutorials","effects":{"impact":0,"inclusivity":5,"trust":2,"budget":-8}},
-            {"text":"Ignore feedback","effects":{"impact":0,"inclusivity":-12,"trust":-18,"budget":0}}
+            {"text":"Partner with major game studio","effects":{"impact":20,"inclusivity":3,"trust":6,"budget":-25000}},
+            {"text":"Smaller partnerships","effects":{"impact":10,"inclusivity":2,"trust":4,"budget":-12000}}
           ]
         },
         {
-          "id": "growth",
-          "title": "Stage 4 — Growth Decision",
-          "description": "Select growth approach.",
+          "id": "final-launch",
+          "title": "Stage 7 — Final Launch",
+          "time": 2,
+          "description": "Decide on the scale of release.",
           "choices": [
-            {"text":"Partner with schools for adoption","effects":{"impact":10,"inclusivity":10,"trust":8,"budget":-20}},
-            {"text":"Scale via influencers and ads","effects":{"impact":15,"inclusivity":-5,"trust":-5,"budget":-10}}
+            {"text":"Global launch","effects":{"impact":15,"inclusivity":0,"trust":4,"budget":-6000}},
+            {"text":"Beta release","effects":{"impact":8,"inclusivity":2,"trust":6,"budget":-4000}}
           ]
         }
       ]

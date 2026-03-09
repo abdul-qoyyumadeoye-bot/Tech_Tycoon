@@ -1,38 +1,28 @@
 // ============================================================================
 // PROBLEM SELECTION PAGE
-// Dynamically generates random scenarios using StageGenerator
+// Loads fixed scenarios from data/scenarios.json
 // ============================================================================
 
 let scenarios = [];
 
 async function loadScenarios() {
   try {
-    // Check URL for seed parameter (for testing/reproducibility)
-    const urlParams = new URLSearchParams(window.location.search);
-    const seed = urlParams.get('seed') ? parseInt(urlParams.get('seed')) : null;
-
-    // Generate 5 different random scenarios
-    scenarios = [];
-    for (let i = 0; i < 5; i++) {
-      // Each scenario gets a unique seed based on the main seed
-      const scenarioSeed = seed !== null ? seed + i : null;
-      const generator = new StageGenerator(scenarioSeed);
-      const scenario = generator.generateScenario(`scenario-${i}`);
-      scenarios.push(scenario);
-    }
-
-    if (scenarios.length === 0) {
-      throw new Error('Failed to generate scenarios');
-    }
-
-    // render the generated list so the user can pick one
+    const response = await fetch('../data/scenarios.json');
+    const data = await response.json();
+    const problems = Array.isArray(data.problems) ? data.problems : [];
+    // protect against accidental duplicate entries by id
+    const uniqueById = new Map();
+    problems.forEach((p) => {
+      if (p && p.id && !uniqueById.has(p.id)) uniqueById.set(p.id, p);
+    });
+    scenarios = Array.from(uniqueById.values());
+    if (scenarios.length === 0) throw new Error('No scenarios found in data/scenarios.json');
     renderProblems();
   } catch (e) {
-    console.error('Error generating scenarios:', e);
-    // Fallback: show error message
+    console.error('Error loading scenarios:', e);
     const container = document.getElementById('problems-list');
     if (container) {
-      container.innerHTML = '<p style="color: red;">Error generating scenarios. Please refresh the page.</p>';
+      container.innerHTML = '<p style="color: red;">Error loading scenarios. Please refresh the page.</p>';
     }
   }
 }
@@ -45,8 +35,8 @@ function renderProblems() {
       <input type="radio" name="problem" value="${problem.id}" style="position: absolute; top: 16px; right: 16px; width: 24px; height: 24px; cursor: pointer;">
       <div class="problem-theme">${problem.theme}</div>
       <h3 class="problem-title">${problem.title}</h3>
-      <p class="problem-subinfo"><strong>${problem.stages.length} decision day${problem.stages.length>1?'s':''}</strong></p>
-      <p class="problem-description">${problem.objectives}</p>
+      <p class="problem-subinfo"><strong>Deadline:</strong> Day ${problem.totalDays} ${problem.launchDeadline ? `(${problem.launchDeadline})` : ''}</p>
+      <p class="problem-description">${problem.projectBrief || ''}</p>
     </label>
   `).join('');
 
@@ -76,9 +66,11 @@ function selectProblem() {
   const problem = scenarios.find(p => p.id === selected.value);
   if (problem) {
     gameState.setProblem(selected.value, problem); // Pass full scenario (NEW)
-    gameState.data.scores.budget = problem.initialBudget;
-    gameState.data.initialBudget = problem.initialBudget;
+    gameState.data.scores.budget = problem.startingBudget || 0;
+    gameState.data.initialBudget = problem.startingBudget || 0;
     gameState.data.totalStages = problem.stages.length;
+    gameState.data.currentDay = 0;
+    gameState.data.totalDays = problem.totalDays || 0;
     gameState.save();
   }
 

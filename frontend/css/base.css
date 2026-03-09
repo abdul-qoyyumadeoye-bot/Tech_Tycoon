@@ -199,6 +199,16 @@ ul li {
   min-width: 0;
 }
 
+/* Stage page uses a vertical content flow: score strip above stage card */
+.main-container.stage-main {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.main-container.stage-main > * {
+  width: 100%;
+}
+
 /* ============================================================================
    SIDEBAR (for stage page metrics)
    ============================================================================ */
@@ -1277,4 +1287,3 @@ body.big-text .form-group select {
     gap: 6px;
   }
 }
-

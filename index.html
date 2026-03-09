@@ -22,19 +22,19 @@
 				<h3>Team Metrics</h3>
 				<div class="metric-card">
 					<span class="metric-label">Impact</span>
-					<span id="metric-impact" class="metric-value">50</span>
+					<span id="metric-impact" class="metric-value">0</span>
 				</div>
 				<div class="metric-card">
 					<span class="metric-label">Inclusivity</span>
-					<span id="metric-inclusivity" class="metric-value">50</span>
+					<span id="metric-inclusivity" class="metric-value">0</span>
 				</div>
 				<div class="metric-card">
 					<span class="metric-label">Trust</span>
-					<span id="metric-trust" class="metric-value">50</span>
+					<span id="metric-trust" class="metric-value">0</span>
 				</div>
 				<div class="metric-card budget-card">
 					<span class="metric-label">Budget</span>
-					<span id="metric-budget" class="metric-value">100</span>
+					<span id="metric-budget" class="metric-value">0</span>
 				</div>
 			</div>
 		</aside>
@@ -58,7 +58,7 @@
 
 		<section class="screen" data-index="2" id="problem-screen">
 			<h2>Choose a Problem</h2>
-			<p id="problem-desc">A random tech-topic will be chosen for your team.</p>
+			<p id="problem-desc">Select a scenario to begin.</p>
 			<ul id="problem-list" class="options">
 				<!-- populated from scenarios.json -->
 			</ul>
@@ -84,6 +84,8 @@
 		<section class="screen" data-index="4" id="team-members-screen">
 			<h2>Select Your Team</h2>
 			<p id="team-members-instruction">Pick exactly 5 team members to work with you.</p>
+			<button id="team-hint-btn" class="hint-btn">View suggested team</button>
+			<div id="team-hint" class="hint-text" style="display:none; margin:8px 0; padding:8px; border:1px solid #ccc; background:#f9f9f9;"></div>
 			<div class="member-list" id="member-list">
 				<!-- populated dynamically, simple defaults provided in JS if needed -->
 			</div>
@@ -94,18 +96,28 @@
 		</section>
 
 		<section class="screen" data-index="5" id="stage-screen">
+			<div id="deadline-info" class="deadline-info" style="margin-bottom:12px;font-weight:600;"></div>
 			<h2 id="stage-title">Stage</h2>
 			<p id="stage-desc">Stage description here.</p>
 			<div id="stage-choices" class="choices">
 				<!-- choices rendered here -->
 			</div>
+			<div id="stage-feedback" style="margin-top:12px;color:#333;font-style:italic;"></div>
 			<div class="controls">
 				<button class="prev-btn">Back</button>
 				<button class="next-btn" id="stage-next">Next</button>
 			</div>
 		</section>
 
-		<section class="screen" data-index="6" id="results-screen">
+		<section class="screen" data-index="6" id="deadline-screen">
+			<h2>Time&#39;s Up!</h2>
+			<p id="deadline-message"></p>
+			<div class="controls">
+				<button class="restart-btn">Restart</button>
+			</div>
+		</section>
+
+		<section class="screen" data-index="7" id="results-screen">
 			<h2>Results</h2>
 			<div id="summary">
 				<p>No choices yet.</p>
@@ -122,4 +134,3 @@
 	<button id="accessibility-toggle" aria-expanded="false" class="access-btn" title="Accessibility options">♿</button>
 </body>
 </html>
-

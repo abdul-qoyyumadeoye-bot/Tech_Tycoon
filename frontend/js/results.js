@@ -14,7 +14,7 @@ function renderResults() {
   document.getElementById('final-impact').textContent = gameState.data.scores.impact;
   document.getElementById('final-inclusivity').textContent = gameState.data.scores.inclusivity;
   document.getElementById('final-trust').textContent = gameState.data.scores.trust;
-  document.getElementById('final-budget').textContent = '£' + gameState.data.scores.budget.toLocaleString();
+  document.getElementById('final-budget').textContent = '$' + gameState.data.scores.budget.toLocaleString();
 
   // Generate results message based on scores
   const message = generateResultsMessage();
@@ -37,20 +37,29 @@ function renderResults() {
 }
 
 function generateResultsMessage() {
+  const problem = gameState.data.problem;
   const { impact, inclusivity, trust, budget } = gameState.data.scores;
   const average = (impact + inclusivity + trust) / 3;
 
   let message = '';
   let sentiment = 'balanced';
 
-  // Check if project ran out of budget and is incomplete
-  if (gameState.data.gameStatus === 'incomplete') {
+  if (gameState.data.gameStatus === 'time-up') {
+    sentiment = 'time-up';
+    const totalDays = gameState.data.totalDays || (problem?.totalDays || 0);
+    const currentDay = gameState.data.currentDay || 0;
+    const overtime = Math.max(0, currentDay - totalDays);
+    message = `<strong>⏰ Time Up: Project Closed</strong><br>
+    Deadline was Day ${totalDays}${problem?.launchDeadline ? ` (${problem.launchDeadline})` : ''}. Your team reached Day ${currentDay}.${overtime > 0 ? ` You were ${overtime} day${overtime !== 1 ? 's' : ''} late.` : ''}<br>
+    Final status: Impact ${impact}, Inclusivity ${inclusivity}, Trust ${trust}, Budget $${budget.toLocaleString()}.<br>
+    The launch window ended before you could continue, so the project has been closed.`;
+  } else if (gameState.data.gameStatus === 'incomplete') {
     sentiment = 'incomplete';
-    message = `<strong>❌ Project Incomplete:</strong> Your team ran out of budget before completing all planned work. Despite your efforts to deliver impact (Impact: ${impact}), maintain inclusivity (Inclusivity: ${inclusivity}), and preserve stakeholder trust (Trust: ${trust}), the financial constraints forced the project to halt prematurely. The crisis response was only partially implemented. This is a hard lesson in resource management: sometimes even the best intentions cannot overcome budget limitations. Next time, plan more carefully and be prepared to make tougher trade-offs earlier.`;
-  } else if (average > 70 && trust > 60 && budget > 0) {
+    message = `<strong>❌ Project Incomplete:</strong> Your team ran out of budget before completing all planned work. Despite your efforts to deliver impact (Impact: ${impact}), maintain inclusivity (Inclusivity: ${inclusivity}), and preserve stakeholder trust (Trust: ${trust}), financial constraints forced the project to halt.`;
+  } else if (average >= 75 && trust >= 70 && budget > 0) {
     sentiment = 'excellent';
     message = `<strong>Excellent Leadership:</strong> Your team navigated this crisis with remarkable balance. You prioritized inclusive solutions (Inclusivity: ${inclusivity}), maintained strong stakeholder relationships (Trust: ${trust}), and delivered real impact (Impact: ${impact}). Schools and advocacy groups are praising your commitment to do the right thing. You've emerged stronger.`;
-  } else if (average > 55 && trust > 50 && budget > 0) {
+  } else if (average >= 55 && trust >= 50 && budget > 0) {
     sentiment = 'good';
     message = `<strong>Solid Crisis Management:</strong> You made reasonable trade-offs and kept your team together. Impact: ${impact}, Inclusivity: ${inclusivity}, Trust: ${trust}. While not perfect, you demonstrated thoughtful decision-making under pressure. There's room to improve, but you prevented disaster.`;
   } else {
@@ -69,15 +78,15 @@ function generateReprimands() {
   // metrics trigger an "areas of concern" warning. Financial trouble is
   // already handled separately (incomplete projects, etc.).
 
-  if (impact < 50) {
+  if (impact < 40) {
     reprimands.push('<strong>Low Impact:</strong> You failed to deliver meaningful solutions to the core problem. Whatever you attempted, it wasn\'t enough to create real change. In future crises, focus on actions that actually move the needle, not just going through the motions.');
   }
 
-  if (inclusivity < 50) {
+  if (inclusivity < 40) {
     reprimands.push('<strong>Low Inclusivity:</strong> Your approach excluded significant portions of your user base or stakeholder community. You may have solved the problem for some while making things worse for others. Genuine inclusion means considering all voices, especially those most affected.');
   }
 
-  if (trust < 50) {
+  if (trust < 40) {
     reprimands.push('<strong>Low Trust:</strong> Your stakeholders don\'t believe in your leadership or your solutions. Whether through lack of transparency, poor communication, or decisions perceived as self-serving, you lost the confidence of the people who need to support your work. Trust, once broken, is incredibly hard to rebuild.');
   }
 
@@ -143,7 +152,7 @@ function renderDecisionsSummary() {
         Impact: ${choice.effects.impact > 0 ? '+' : ''}${choice.effects.impact}, 
         Inclusivity: ${choice.effects.inclusivity > 0 ? '+' : ''}${choice.effects.inclusivity}, 
         Trust: ${choice.effects.trust > 0 ? '+' : ''}${choice.effects.trust}, 
-        Budget: £${choice.effects.budget > 0 ? '+' : ''}${choice.effects.budget.toLocaleString()}
+        Budget: $${choice.effects.budget > 0 ? '+' : ''}${choice.effects.budget.toLocaleString()}
       </small>
     </li>
   `).join('') + '</ul>';
@@ -223,11 +232,11 @@ async function downloadResults() {
     csv += `Impact,${data.finalScores.impact}\n`;
     csv += `Inclusivity,${data.finalScores.inclusivity}\n`;
     csv += `Trust,${data.finalScores.trust}\n`;
-    csv += `Budget Remaining,£${data.finalScores.budget}\n\n`;
+    csv += `Budget Remaining,$${data.finalScores.budget}\n\n`;
     csv += 'Decisions\n';
     csv += 'Day,Decision,Impact,Inclusivity,Trust,Budget Change\n';
     data.choices.forEach((choice, idx) => {
-      csv += `${idx + 1},"${choice.choiceText}",${choice.effects.impact},${choice.effects.inclusivity},${choice.effects.trust},£${choice.effects.budget}\n`;
+      csv += `${idx + 1},"${choice.choiceText}",${choice.effects.impact},${choice.effects.inclusivity},${choice.effects.trust},$${choice.effects.budget}\n`;
     });
 
     const blob = new Blob([csv], { type: 'text/csv' });
