@@ -748,36 +748,41 @@ button:disabled {
 }
 
 /* ============================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN — MOBILE FRIENDLY
    ============================================================================ */
+
+/* ---- TABLET BREAKPOINT (1024px and below) ---- */
 @media (max-width: 1024px) {
   .app-container {
     flex-direction: column;
     gap: 16px;
+    padding: 16px;
   }
 
   .sidebar {
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
   }
 
   .sidebar-content {
     position: relative;
     top: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 12px;
+    sticky: none;
   }
 
   .sidebar-content h3 {
     grid-column: 1 / -1;
+    margin-bottom: 8px;
   }
 
   .metric-card {
     flex-direction: column;
     text-align: center;
-    padding: 12px;
+    padding: 14px;
     border: 1px solid #e2e8f0;
     border-radius: 6px;
     background: #f7fafc;
@@ -786,29 +791,18 @@ button:disabled {
   .metric-card:last-child {
     border-bottom: 1px solid #e2e8f0;
   }
-}
 
-@media (max-width: 768px) {
-  .topnav-content {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+  .metric-label {
+    font-size: 12px;
   }
 
-  .topnav h1 {
+  .metric-value {
     font-size: 20px;
-  }
-
-  .progress-bar-container {
-    max-width: none;
+    margin-top: 6px;
   }
 
   .member-list {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .choices {
-    gap: 12px;
   }
 
   .screen {
@@ -818,31 +812,490 @@ button:disabled {
   .screen h2 {
     font-size: 24px;
   }
+
+  .screen p {
+    font-size: 15px;
+  }
 }
 
-@media (max-width: 480px) {
+/* ---- SMALL TABLET / LANDSCAPE MOBILE (768px and below) ---- */
+@media (max-width: 768px) {
+  html, body {
+    font-size: 15px;
+  }
+
+  .topnav {
+    position: sticky;
+    top: 0;
+  }
+
+  .topnav-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .topnav h1 {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .progress-bar-container {
+    max-width: none;
+    flex: 1;
+  }
+
   .app-container {
     padding: 12px;
+    gap: 12px;
+  }
+
+  .sidebar-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .metric-card {
+    padding: 12px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+  }
+
+  .metric-value {
+    font-size: 18px;
   }
 
   .screen {
     padding: 16px;
+    margin: 0 -12px;
+    border-radius: 0;
+    box-shadow: none;
   }
 
-  .topnav-content {
-    padding: 12px 16px;
+  .screen h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .screen p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  #welcome-screen h2, #brief-screen h2 {
+    font-size: 24px;
+  }
+
+  .options {
+    margin: 16px 0;
+    gap: 10px;
+  }
+
+  .options label,
+  .roles label {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .options input[type="radio"],
+  .roles input[type="radio"] {
+    width: 18px;
+    height: 18px;
   }
 
   .member-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 16px auto;
+  }
+
+  .member-list label {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .member-list input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .choices {
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .choice {
+    padding: 16px;
+  }
+
+  .choice-text {
+    font-size: 15px;
   }
 
   .controls {
     flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
   }
 
   button {
+    padding: 12px 16px;
+    font-size: 15px;
+    min-width: auto;
     width: 100%;
+    min-height: 44px;
+  }
+
+  .next-btn, .start-btn, .prev-btn, .restart-btn {
+    min-width: auto;
+  }
+
+  #accessibility-panel {
+    right: 12px;
+    bottom: 66px;
+    min-width: 200px;
+    padding: 12px;
+  }
+
+  .access-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 50px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+/* ---- MOBILE BREAKPOINT (480px and below) ---- */
+@media (max-width: 480px) {
+  html, body {
+    font-size: 14px;
+  }
+
+  .topnav-content {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .topnav h1 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .progress-bar-container {
+    height: 5px;
+    margin-top: 8px;
+  }
+
+  .app-container {
+    padding: 8px;
+    min-height: calc(100vh - 64px);
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebar-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 12px;
+    border-radius: 6px;
+  }
+
+  .sidebar-content h3 {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    margin: 0 0 4px 0;
+  }
+
+  .metric-card {
+    padding: 10px;
+    gap: 6px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .metric-label {
+    font-size: 10px;
+  }
+
+  .metric-value {
+    font-size: 16px;
+  }
+
+  .budget-card {
+    grid-column: 1 / -1;
+    margin: 4px -12px -12px -12px;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .screen {
+    padding: 12px;
+    margin: 0 -8px;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: auto;
+  }
+
+  .screen h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .screen p {
+    font-size: 13px;
+    margin-bottom: 12px;
+    max-width: 100%;
+  }
+
+  #welcome-screen, #brief-screen {
+    min-height: 200px;
+    padding: 16px 12px;
+  }
+
+  #welcome-screen h2, #brief-screen h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  #welcome-screen p, #brief-screen p {
+    font-size: 13px;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .options {
+    margin: 12px 0;
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  .options label,
+  .roles label {
+    padding: 12px;
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+
+  .options input[type="radio"],
+  .roles input[type="radio"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    flex-shrink: 0;
+  }
+
+  .roles {
+    max-width: 100%;
+    margin: 16px 0;
+    gap: 10px;
+  }
+
+  .member-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    max-width: 100%;
+    margin: 12px 0;
+  }
+
+  .member-list label {
+    padding: 12px;
+    font-size: 13px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .member-list input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .choices {
+    gap: 10px;
+    margin: 12px 0;
+    max-width: 100%;
+  }
+
+  .choice {
+    padding: 14px;
+    min-height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .choice-text {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .choice-impacts {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .impact-badge {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .choice button {
+    font-size: 13px;
+    padding: 10px 12px;
+    margin-top: auto;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  button {
+    padding: 12px 16px;
+    font-size: 14px;
+    width: 100%;
+    min-height: 44px;
+    border-radius: 6px;
+  }
+
+  .next-btn, .start-btn, .prev-btn, .restart-btn {
+    min-width: auto;
+  }
+
+  #results-screen {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  #summary {
+    padding: 16px;
+  }
+
+  #summary p, #summary li {
+    font-size: 13px;
+  }
+
+  #summary h4 {
+    font-size: 14px;
+  }
+
+  /* Accessibility panel mobile */
+  #accessibility-panel {
+    position: fixed;
+    right: 8px;
+    bottom: 58px;
+    min-width: 160px;
+    max-width: 90%;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  #accessibility-panel label {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  #accessibility-panel input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  #accessibility-panel button {
+    padding: 8px;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .access-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    line-height: 48px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  /* High contrast & big text adjustments for mobile */
+  .big-text .topnav h1 {
+    font-size: 18px;
+  }
+
+  .big-text .screen h2 {
+    font-size: 24px;
+  }
+
+  .big-text .screen p {
+    font-size: 15px;
+  }
+
+  .big-text .options label,
+  .big-text .roles label,
+  .big-text .member-list label {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .big-text button {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .big-text .metric-value {
+    font-size: 18px;
+  }
+}
+
+/* ---- VERY SMALL MOBILE (320px and below) ---- */
+@media (max-width: 360px) {
+  .topnav h1 {
+    font-size: 14px;
+  }
+
+  .screen h2 {
+    font-size: 18px;
+  }
+
+  button {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .member-list label,
+  .options label {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .sidebar-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #accessibility-panel {
+    min-width: 140px;
+  }
+
+  .access-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    line-height: 44px;
   }
 }
 
