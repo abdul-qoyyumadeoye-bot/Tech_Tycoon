@@ -4,49 +4,71 @@
 // ============================================================================
 
 function renderBrief() {
-  // Get the full scenario object from gameState (stored when scenario was selected)
   const problem = gameState.data.problem;
-  
+
   if (!problem) {
     document.getElementById('brief-content').innerHTML = '<p style="color: #dc2626; font-weight: 600;">Error: Scenario not found. Please go back and select a scenario.</p>';
     return;
   }
 
   const html = `
-    <div>
-      <div style="margin-bottom: 12px;">
-        <span style="color: #3b82f6; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px;">
-          ${problem.theme}
-        </span>
+    <div class="brief-shell">
+      <div class="panel-intro">
+        <div class="panel-kicker">Mission Brief</div>
+        <h2>${problem.title}</h2>
+        <p>${problem.theme}</p>
       </div>
-      <h2>${problem.title}</h2>
-      <div style="background: #f0f9ff; padding: 24px; border-radius: 8px; border-left: 4px solid #3b82f6; margin: 24px 0; line-height: 1.8;">
-        ${(problem.projectBrief || '').split('\n').map(para => `<p style="margin: 0 0 16px 0;">${para}</p>`).join('')}
+
+      <div class="brief-hero">
+        ${(problem.projectBrief || '').split('\n').map(para => `<p>${para}</p>`).join('')}
       </div>
-      <div style="margin-top: 32px;">
-        <h3>Launch Details</h3>
-        <p><strong>Launch Deadline:</strong> Day ${problem.totalDays || 0} ${problem.launchDeadline ? `(${problem.launchDeadline})` : ''}</p>
-        <p><strong>Total Development Window:</strong> ${problem.totalDays || 0} days</p>
+
+      <div class="brief-stats-grid">
+        <div class="brief-stat-card">
+          <span>Launch deadline</span>
+          <strong>Day ${problem.totalDays || 0}</strong>
+          <small>${problem.launchDeadline || 'Deadline TBC'}</small>
+        </div>
+        <div class="brief-stat-card">
+          <span>Starting budget</span>
+          <strong>$${(problem.startingBudget || 0).toLocaleString()}</strong>
+          <small>Available runway for the full sprint</small>
+        </div>
+        <div class="brief-stat-card">
+          <span>Total stages</span>
+          <strong>${problem.stages?.length || 0}</strong>
+          <small>Decision points in this run</small>
+        </div>
       </div>
-      <div style="margin-top: 24px; padding: 16px; background: #fef3c7; border-radius: 6px;">
-        <strong>Starting Budget: $${(problem.startingBudget || 0).toLocaleString()}</strong>
-        <p style="margin: 8px 0 0 0; font-size: 14px;">This is the total amount you have to resolve this crisis. Spend wisely.</p>
-      </div>
-      <div style="margin-top: 24px; padding: 16px; background: #f3f4f6; border-radius: 6px;">
-        <strong>Suggested Team:</strong>
-        <p style="margin: 8px 0 0 0; font-size: 14px;">${(problem.suggestedTeam || []).join(', ')}</p>
+
+      <div class="brief-columns">
+        <section class="brief-panel">
+          <h3>Suggested team</h3>
+          <div class="brief-chip-row">
+            ${(problem.suggestedTeam || []).map(member => `<span class="brief-chip">${member}</span>`).join('')}
+          </div>
+        </section>
+        <section class="brief-panel">
+          <h3>What success looks like</h3>
+          <ul>
+            <li>Ship before the deadline.</li>
+            <li>Protect trust while handling pressure.</li>
+            <li>Use budget carefully enough to finish the run.</li>
+            <li>Balance impact with inclusive decisions.</li>
+          </ul>
+        </section>
       </div>
     </div>
   `;
 
   document.getElementById('brief-content').innerHTML = html;
+  window.TechTycoonUI?.revealElements(document.getElementById('brief-content'));
 }
 
 function continueToTeam() {
-  window.location.href = 'select-team.html';
+  window.TechTycoonUI?.navigate('select-team.html') || (window.location.href = 'select-team.html');
 }
 
-// Initialize page
 document.addEventListener('DOMContentLoaded', () => {
   renderBrief();
 });

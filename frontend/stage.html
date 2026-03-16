@@ -4,22 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechTycoon - Game Stage</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/avatars.css">
+  <link rel="stylesheet" href="css/base.css?v=20260316b">
+  <link rel="stylesheet" href="css/avatars.css?v=20260316b">
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-stage">
   <nav class="topnav">
     <div class="topnav-content">
-      <h1>⚡ TechTycoon Simulator</h1>
+      <h1>TechTycoon Simulator</h1>
       <div class="progress-bar-container">
         <div class="progress-bar" id="progress" style="width: 40%;"></div>
       </div>
-      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">&#9855;</button>
     </div>
   </nav>
 
-  <!-- Accessibility Panel -->
   <div id="accessibility-panel" style="display: none;">
     <label>
       <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
@@ -33,7 +31,6 @@
     <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
   </div>
 
-  <!-- Main Content -->
   <main class="main-container stage-main">
     <section id="deadline-strip" style="width: 100%; margin-bottom: 10px; padding: 12px 16px; border-radius: 8px; background: #fff7ed; border-left: 4px solid #f97316; font-weight: 700;">
       Launch Deadline: Day 0 | Current Day: Day 0 | Days Remaining: 0
@@ -45,9 +42,7 @@
       <div class="metric-card budget-card"><span class="metric-label">Budget Remaining</span><span class="metric-value" id="budget-score">$0</span></div>
     </section>
     <div id="stage-content" class="stage-container">
-      <!-- Stage content will be inserted here by JavaScript -->
     </div>
-    
   </main>
 
   <footer class="nav-footer">
@@ -57,12 +52,10 @@
     </div>
   </footer>
 
-
-
-  <script src="js/gameState.js"></script>
-  <script src="js/accessibility.js"></script>
-  <!-- generator used only for safety checks when restoring a scenario -->
-  <script src="js/stageGenerator.js"></script>
-  <script src="js/stage.js"></script>
+  <script src="js/gameState.js?v=20260316b"></script>
+  <script src="js/accessibility.js?v=20260316b"></script>
+  <script src="js/ui.js?v=20260316b"></script>
+  <script src="js/stageGenerator.js?v=20260316b"></script>
+  <script src="js/stage.js?v=20260316b"></script>
 </body>
 </html>

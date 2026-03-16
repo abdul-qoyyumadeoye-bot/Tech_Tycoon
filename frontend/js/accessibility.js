@@ -177,14 +177,17 @@ const accessibility = new AccessibilityManager();
 
 // Navigation helpers
 function goBack() {
-  window.history.back();
+  window.TechTycoonUI?.transitionBack() || window.history.back();
 }
 
 function goToResults() {
-  window.location.href = 'results.html';
+  window.TechTycoonUI?.navigate('results.html') || (window.location.href = 'results.html');
 }
 
 function startNewGame() {
   gameState.reset();
-  window.location.href = 'index.html';
+  window.TechTycoonUI?.navigate('index.html') || (window.location.href = 'index.html');
 }
+
+
+

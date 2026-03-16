@@ -30,9 +30,9 @@ class GameState {
       totalDays: 0,
       gameStatus: 'in-progress', // 'in-progress', 'complete', 'incomplete'
       scores: {
-        impact: 0,
-        inclusivity: 0,
-        trust: 0,
+        impact: 50,
+        inclusivity: 50,
+        trust: 50,
         budget: 0
       },
       initialBudget: 0,

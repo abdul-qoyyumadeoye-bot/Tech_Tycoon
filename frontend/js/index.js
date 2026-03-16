@@ -10,7 +10,7 @@ function startGame() {
   gameState.setTeamName(teamName);
   gameState.startGame();
   
-  window.location.href = 'select-problem.html';
+  window.TechTycoonUI?.navigate('select-problem.html') || (window.location.href = 'select-problem.html');
 }
 
 // Initialize page
@@ -20,3 +20,4 @@ document.addEventListener('DOMContentLoaded', () => {
     teamNameInput.focus();
   }
 });
+

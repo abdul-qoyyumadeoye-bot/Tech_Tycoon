@@ -4,41 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechTycoon - Brief</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/avatars.css">
+  <link rel="stylesheet" href="css/base.css?v=20260316b">
+  <link rel="stylesheet" href="css/avatars.css?v=20260316b">
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-brief">
   <nav class="topnav">
     <div class="topnav-content">
-      <h1>⚡ TechTycoon Simulator</h1>
+      <h1>TechTycoon Simulator</h1>
       <div class="progress-bar-container">
         <div class="progress-bar" style="width: 20%;"></div>
       </div>
-      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">&#9855;</button>
     </div>
   </nav>
 
-  <!-- Accessibility Panel -->
   <div id="accessibility-panel" style="display: none;">
-    <label>
-      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
-    </label>
-    <label>
-      <input type="checkbox" id="big-text-toggle"> Large Text
-    </label>
-    <label>
-      <input type="checkbox" id="tts-toggle"> Text-to-Speech
-    </label>
+    <label><input type="checkbox" id="high-contrast-toggle"> High Contrast Mode</label>
+    <label><input type="checkbox" id="big-text-toggle"> Large Text</label>
+    <label><input type="checkbox" id="tts-toggle"> Text-to-Speech</label>
     <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
   </div>
 
-  <!-- Main Content -->
-  <main class="main-container">
-    <div id="brief-content" class="stage-container">
-      <!-- Brief content will be inserted here by JavaScript -->
-    </div>
-    
+  <main class="main-container main-container--selection">
+    <div id="brief-content" class="stage-container selection-panel"></div>
   </main>
 
   <footer class="nav-footer">
@@ -48,9 +36,10 @@
     </div>
   </footer>
 
-
-  <script src="js/gameState.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/brief.js"></script>
+  <script src="js/gameState.js?v=20260316b"></script>
+  <script src="js/accessibility.js?v=20260316b"></script>
+  <script src="js/ui.js?v=20260316b"></script>
+  <script src="js/brief.js?v=20260316b"></script>
 </body>
 </html>
+

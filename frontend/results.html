@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechTycoon - Results</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/avatars.css">
+  <link rel="stylesheet" href="css/base.css?v=20260316b">
+  <link rel="stylesheet" href="css/avatars.css?v=20260316b">
 </head>
-<body>
+<body class="page-results">
   <!-- Navigation -->
   <nav class="topnav">
     <div class="topnav-content">
@@ -38,11 +38,12 @@
     <div class="results-container">
       <h2 class="results-title">Game Complete!</h2>
       
-      <div id="results-message" class="results-message">
+      <div id="results-message" class="results-message results-block">
         <!-- Results message will be inserted here -->
       </div>
       
-      <div class="Final-scores-grid">
+      <div id="results-badges" class="results-badges results-block"></div>
+      <div class="Final-scores-grid results-block">
         <div class="score-card">
           <div class="score-label">Impact</div>
           <div class="score-value" id="final-impact">0</div>
@@ -61,14 +62,14 @@
         </div>
       </div>
       
-      <div class="reflection-section">
+      <div class="reflection-section results-block">
         <div class="reflection-title">Reflection Questions</div>
         <ul class="reflection-questions" id="reflection-questions">
           <!-- Reflection questions will be inserted here -->
         </ul>
       </div>
       
-      <div id="summary-section" style="margin: 24px 0; padding: 16px; background: #f0f9ff; border-radius: 8px;">
+      <div id="summary-section" class="results-block" style="margin: 24px 0; padding: 16px; background: #f0f9ff; border-radius: 8px;">
         <h3 style="margin-top: 0;">Your Decisions</h3>
         <div id="decisions-summary"></div>
       </div>
@@ -86,8 +87,13 @@
   </footer>
 
 
-  <script src="js/gameState.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/results.js"></script>
+  <script src="js/gameState.js?v=20260316b"></script>
+  <script src="js/accessibility.js?v=20260316b"></script>
+  <script src="js/ui.js?v=20260316b"></script>
+  <script src="js/results.js?v=20260316b"></script>
 </body>
 </html>
+
+
+
+

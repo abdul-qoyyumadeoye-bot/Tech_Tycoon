@@ -4,19 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechTycoon - Welcome</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/avatars.css">
+  <link rel="stylesheet" href="css/base.css?v=20260316b">
+  <link rel="stylesheet" href="css/avatars.css?v=20260316b">
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-landing">
   <nav class="topnav">
     <div class="topnav-content">
-      <h1>⚡ TechTycoon Simulator</h1>
-      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+      <h1>TechTycoon Simulator</h1>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">&#9855;</button>
     </div>
   </nav>
 
-  <!-- Accessibility Panel -->
   <div id="accessibility-panel" style="display: none;">
     <label>
       <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
@@ -30,44 +28,58 @@
     <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
   </div>
 
-  <!-- Main Content -->
-  <main class="main-container">
-    <div class="welcome-screen">
-      <div class="welcome-content">
-        <h2>Welcome to TechTycoon</h2>
-        <p class="welcome-subtitle">An Educational Business Simulation Game</p>
-        
+  <main class="main-container main-container--menu">
+    <section class="welcome-screen menu-shell">
+      <div class="welcome-content menu-panel">
+        <div class="menu-kicker">Management Sim</div>
+        <h2>Build the startup. Survive the sprint.</h2>
+        <p class="welcome-subtitle">Lead a tech team through deadlines, crises, trade-offs, and launch pressure.</p>
+
+        <div class="menu-stat-row">
+          <div class="menu-stat-card">
+            <span>Run Length</span>
+            <strong>20-30 min</strong>
+          </div>
+          <div class="menu-stat-card">
+            <span>Play Style</span>
+            <strong>Team Strategy</strong>
+          </div>
+          <div class="menu-stat-card">
+            <span>Core Loop</span>
+            <strong>Choose, react, recover</strong>
+          </div>
+        </div>
+
         <div class="welcome-description">
-          <p>In TechTycoon, you'll lead a technical team through real-world challenges faced by tech companies serving students and schools.</p>
-          <p>You'll make critical decisions about how to:</p>
+          <p>In TechTycoon, your team runs a startup under real pressure. Every stage costs time, money, and stakeholder confidence.</p>
+          <p>You will balance four live metrics throughout the run:</p>
           <ul>
-            <li>Solve technical problems</li>
-            <li>Manage limited budgets</li>
-            <li>Balance team needs with company reputation</li>
-            <li>Prioritize impact and inclusivity</li>
+            <li>Impact: are you solving the real problem?</li>
+            <li>Inclusivity: who benefits, and who gets left out?</li>
+            <li>Trust: do users and schools still believe in you?</li>
+            <li>Budget: how much runway do you have left?</li>
           </ul>
-          <p>Your choices will determine your scores across four key metrics: <strong>Impact, Inclusivity, Trust, and Budget</strong>. Can you solve the crisis while keeping everyone satisfied?</p>
         </div>
 
         <div class="form-group">
-          <label for="team-name">What is your team name?</label>
+          <label for="team-name">Team name</label>
           <input type="text" id="team-name" placeholder="Enter your team name" value="Techgrine">
         </div>
-
       </div>
-    </div>
+    </section>
   </main>
 
   <footer class="nav-footer">
     <div class="button-group">
-      <button class="btn btn-secondary" onclick="window.location.href='how-to-play.html'">📖 How to Play</button>
-      <button class="btn btn-primary btn-large" onclick="startGame()">Begin Scenario Selection</button>
+      <button class="btn btn-secondary" onclick="window.location.href='how-to-play.html'">How to Play</button>
+      <button class="btn btn-primary btn-large" onclick="startGame()">Play</button>
     </div>
   </footer>
 
-
-  <script src="js/gameState.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/gameState.js?v=20260316b"></script>
+  <script src="js/accessibility.js?v=20260316b"></script>
+  <script src="js/ui.js?v=20260316b"></script>
+  <script src="js/index.js?v=20260316b"></script>
 </body>
 </html>
+

@@ -4,91 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechTycoon - Select Role</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/avatars.css">
+  <link rel="stylesheet" href="css/base.css?v=20260316b">
+  <link rel="stylesheet" href="css/avatars.css?v=20260316b">
 </head>
-<body>
-  <!-- Navigation -->
+<body class="page-role">
   <nav class="topnav">
     <div class="topnav-content">
-      <h1>⚡ TechTycoon Simulator</h1>
+      <h1>TechTycoon Simulator</h1>
       <div class="progress-bar-container">
         <div class="progress-bar" style="width: 25%;"></div>
       </div>
-      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">♿</button>
+      <button class="access-btn" id="accessibility-toggle" aria-label="Accessibility settings" aria-expanded="false">&#9855;</button>
     </div>
   </nav>
 
-  <!-- Accessibility Panel -->
   <div id="accessibility-panel" style="display: none;">
-    <label>
-      <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
-    </label>
-    <label>
-      <input type="checkbox" id="big-text-toggle"> Large Text
-    </label>
-    <label>
-      <input type="checkbox" id="tts-toggle"> Text-to-Speech
-    </label>
+    <label><input type="checkbox" id="high-contrast-toggle"> High Contrast Mode</label>
+    <label><input type="checkbox" id="big-text-toggle"> Large Text</label>
+    <label><input type="checkbox" id="tts-toggle"> Text-to-Speech</label>
     <button class="btn btn-primary" id="read-aloud-btn" style="display: none;">Read Aloud</button>
   </div>
 
-  <!-- Main Content -->
-  <main class="main-container">
-    <div class="stage-container">
-      <h2>Choose Your Leadership Role</h2>
-      <p>Select the role that will lead your technical team through this crisis. Each role brings different perspectives and expertise.</p>
-      
+  <main class="main-container main-container--selection">
+    <div class="stage-container selection-panel">
+      <div class="panel-intro">
+        <div class="panel-kicker">Leadership Setup</div>
+        <h2>Choose your leadership role</h2>
+        <p>Pick the lens your team will lead from. This frames how your group reads risk, speed, ethics, and delivery pressure.</p>
+      </div>
+
       <div class="avatar-grid" id="roles-list">
         <label class="avatar-card">
           <input type="radio" name="role" value="developer" id="role-developer">
-          <div class="avatar-icon">💻</div>
+          <div class="avatar-icon">Dev</div>
           <div class="avatar-name">Technical Lead</div>
-          <div class="avatar-description">Expert in coding and technical architecture. Prioritizes technical solutions and system design.</div>
+          <div class="avatar-description">Drives engineering quality, architecture, and feasibility under pressure.</div>
         </label>
-        
+
         <label class="avatar-card">
           <input type="radio" name="role" value="designer" id="role-designer">
-          <div class="avatar-icon">🎨</div>
+          <div class="avatar-icon">UX</div>
           <div class="avatar-name">Design Lead</div>
-          <div class="avatar-description">Expert in user experience and accessibility. Prioritizes user needs and inclusive design.</div>
+          <div class="avatar-description">Protects usability, accessibility, and clarity for real users.</div>
         </label>
 
         <label class="avatar-card">
           <input type="radio" name="role" value="product" id="role-product">
-          <div class="avatar-icon">📋</div>
+          <div class="avatar-icon">PM</div>
           <div class="avatar-name">Product Lead</div>
-          <div class="avatar-description">Focuses on strategy and user needs, balancing features with business goals.</div>
+          <div class="avatar-description">Balances goals, trade-offs, deadlines, and what ships first.</div>
         </label>
 
         <label class="avatar-card">
           <input type="radio" name="role" value="security" id="role-security">
-          <div class="avatar-icon">🔒</div>
+          <div class="avatar-icon">Sec</div>
           <div class="avatar-name">Security Lead</div>
-          <div class="avatar-description">Ensures systems are secure, protecting data and user privacy.</div>
+          <div class="avatar-description">Cuts risk, hardens systems, and protects user data and trust.</div>
         </label>
 
         <label class="avatar-card">
           <input type="radio" name="role" value="data" id="role-data">
-          <div class="avatar-icon">📊</div>
+          <div class="avatar-icon">Data</div>
           <div class="avatar-name">Data Lead</div>
-          <div class="avatar-description">Guides decisions with analytics and metrics, uncovering insights from data.</div>
+          <div class="avatar-description">Interprets metrics, evidence, and unintended consequences.</div>
         </label>
       </div>
     </div>
-    
   </main>
 
   <footer class="nav-footer">
     <div class="button-group">
       <button class="btn btn-secondary" onclick="goBack()">Back</button>
-      <button class="btn btn-primary btn-large" id="continue-btn" disabled onclick="selectRole()">Select Role & Continue</button>
+      <button class="btn btn-primary btn-large" id="continue-btn" disabled onclick="selectRole()">Lock Role</button>
     </div>
   </footer>
 
-
-  <script src="js/gameState.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/select-role.js"></script>
+  <script src="js/gameState.js?v=20260316b"></script>
+  <script src="js/accessibility.js?v=20260316b"></script>
+  <script src="js/ui.js?v=20260316b"></script>
+  <script src="js/select-role.js?v=20260316b"></script>
 </body>
 </html>
+

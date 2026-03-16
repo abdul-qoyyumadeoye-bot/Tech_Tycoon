@@ -3,37 +3,72 @@
 // ============================================================================
 
 function renderResults() {
-  // Use the stored scenario from gameState
   const problem = gameState.data.problem;
   if (!problem) {
     alert('Problem not found');
     return;
   }
 
-  // Display final scores
-  document.getElementById('final-impact').textContent = gameState.data.scores.impact;
-  document.getElementById('final-inclusivity').textContent = gameState.data.scores.inclusivity;
-  document.getElementById('final-trust').textContent = gameState.data.scores.trust;
-  document.getElementById('final-budget').textContent = '$' + gameState.data.scores.budget.toLocaleString();
-
-  // Generate results message based on scores
   const message = generateResultsMessage();
   document.getElementById('results-message').innerHTML = message;
 
-  // Generate and display reprimands for low scores
   const reprimands = generateReprimands();
   if (reprimands.length > 0) {
-    const reprimandHtml = '<div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px; margin-top: 16px; border-radius: 4px;"><strong style="color: #dc2626;">⚠️ Areas of Concern:</strong><ul style="margin-top: 8px; padding-left: 20px;">' + reprimands.map(r => `<li>${r}</li>`).join('') + '</ul></div>';
+    const reprimandHtml = '<div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px; margin-top: 16px; border-radius: 16px;"><strong style="color: #dc2626;">Areas of Concern</strong><ul style="margin-top: 8px; padding-left: 20px;">' + reprimands.map(r => `<li>${r}</li>`).join('') + '</ul></div>';
     document.getElementById('results-message').innerHTML += reprimandHtml;
   }
 
-  // Reflection questions
   const reflectionQuestions = generateReflectionQuestions();
   const questionsHtml = reflectionQuestions.map(q => `<li>${q}</li>`).join('');
   document.getElementById('reflection-questions').innerHTML = questionsHtml;
 
-  // Summary of decisions
+  renderAchievements();
   renderDecisionsSummary();
+  animateFinalScores();
+  revealResultBlocks();
+}
+
+function animateFinalScores() {
+  const metrics = [
+    { id: 'final-impact', value: gameState.data.scores.impact, currency: false },
+    { id: 'final-inclusivity', value: gameState.data.scores.inclusivity, currency: false },
+    { id: 'final-trust', value: gameState.data.scores.trust, currency: false },
+    { id: 'final-budget', value: gameState.data.scores.budget, currency: true }
+  ];
+
+  metrics.forEach((metric) => {
+    const el = document.getElementById(metric.id);
+    if (!el) return;
+    el.dataset.value = '0';
+    window.TechTycoonUI?.animateValue(el, metric.value, {
+      duration: metric.currency ? 0 : (window.TechTycoonUI?.reducedMotion() ? 0 : 700),
+      formatter: metric.currency ? (value) => '$' + Math.round(value).toLocaleString() : (value) => String(Math.round(value)),
+      pulseClass: metric.currency ? 'neutral' : 'positive'
+    });
+  });
+}
+
+function revealResultBlocks() {
+  const blocks = document.querySelectorAll('.results-block');
+  window.TechTycoonUI?.revealSequence(blocks, 120);
+}
+
+function renderAchievements() {
+  const container = document.getElementById('results-badges');
+  if (!container) return;
+
+  const { impact, inclusivity, trust, budget } = gameState.data.scores;
+  const badges = [];
+
+  if (impact >= 70) badges.push('Impact Driver');
+  if (inclusivity >= 70) badges.push('Inclusive Builder');
+  if (trust >= 70) badges.push('Trust Keeper');
+  if (budget > gameState.data.initialBudget * 0.35) badges.push('Runway Manager');
+  if (gameState.data.gameStatus === 'complete') badges.push('Launch Ready');
+  if (gameState.data.gameStatus === 'time-up') badges.push('Deadline Pressure');
+  if (!badges.length) badges.push('Hard Lessons Learned');
+
+  container.innerHTML = badges.map((badge) => `<div class="results-badge">${badge}</div>`).join('');
 }
 
 function generateResultsMessage() {
@@ -42,29 +77,23 @@ function generateResultsMessage() {
   const average = (impact + inclusivity + trust) / 3;
 
   let message = '';
-  let sentiment = 'balanced';
 
   if (gameState.data.gameStatus === 'time-up') {
-    sentiment = 'time-up';
     const totalDays = gameState.data.totalDays || (problem?.totalDays || 0);
     const currentDay = gameState.data.currentDay || 0;
     const overtime = Math.max(0, currentDay - totalDays);
-    message = `<strong>⏰ Time Up: Project Closed</strong><br>
+    message = `<strong>Time Up: Project Closed</strong><br>
     Deadline was Day ${totalDays}${problem?.launchDeadline ? ` (${problem.launchDeadline})` : ''}. Your team reached Day ${currentDay}.${overtime > 0 ? ` You were ${overtime} day${overtime !== 1 ? 's' : ''} late.` : ''}<br>
     Final status: Impact ${impact}, Inclusivity ${inclusivity}, Trust ${trust}, Budget $${budget.toLocaleString()}.<br>
     The launch window ended before you could continue, so the project has been closed.`;
   } else if (gameState.data.gameStatus === 'incomplete') {
-    sentiment = 'incomplete';
-    message = `<strong>❌ Project Incomplete:</strong> Your team ran out of budget before completing all planned work. Despite your efforts to deliver impact (Impact: ${impact}), maintain inclusivity (Inclusivity: ${inclusivity}), and preserve stakeholder trust (Trust: ${trust}), financial constraints forced the project to halt.`;
+    message = `<strong>Project Incomplete:</strong> Your team ran out of budget before completing all planned work. Despite your efforts to deliver impact (Impact: ${impact}), maintain inclusivity (Inclusivity: ${inclusivity}), and preserve stakeholder trust (Trust: ${trust}), financial constraints forced the project to halt.`;
   } else if (average >= 75 && trust >= 70 && budget > 0) {
-    sentiment = 'excellent';
     message = `<strong>Excellent Leadership:</strong> Your team navigated this crisis with remarkable balance. You prioritized inclusive solutions (Inclusivity: ${inclusivity}), maintained strong stakeholder relationships (Trust: ${trust}), and delivered real impact (Impact: ${impact}). Schools and advocacy groups are praising your commitment to do the right thing. You've emerged stronger.`;
   } else if (average >= 55 && trust >= 50 && budget > 0) {
-    sentiment = 'good';
     message = `<strong>Solid Crisis Management:</strong> You made reasonable trade-offs and kept your team together. Impact: ${impact}, Inclusivity: ${inclusivity}, Trust: ${trust}. While not perfect, you demonstrated thoughtful decision-making under pressure. There's room to improve, but you prevented disaster.`;
   } else {
-    sentiment = 'difficult';
-    message = `<strong>Difficult Choices:</strong> You faced impossible trade-offs. Your scores (Impact: ${impact}, Inclusivity: ${inclusivity}, Trust: ${trust}) reflect the painful reality that every choice had costs. Perhaps some problems have no perfect answer—only different ways to struggle.`;
+    message = `<strong>Difficult Choices:</strong> You faced impossible trade-offs. Your scores (Impact: ${impact}, Inclusivity: ${inclusivity}, Trust: ${trust}) reflect the painful reality that every choice had costs. Perhaps some problems have no perfect answer, only different ways to struggle.`;
   }
 
   return message;
@@ -74,20 +103,16 @@ function generateReprimands() {
   const { impact, inclusivity, trust } = gameState.data.scores;
   const reprimands = [];
 
-  // Budget is intentionally omitted from this list; only the core performance
-  // metrics trigger an "areas of concern" warning. Financial trouble is
-  // already handled separately (incomplete projects, etc.).
-
   if (impact < 40) {
-    reprimands.push('<strong>Low Impact:</strong> You failed to deliver meaningful solutions to the core problem. Whatever you attempted, it wasn\'t enough to create real change. In future crises, focus on actions that actually move the needle, not just going through the motions.');
+    reprimands.push('<strong>Low Impact:</strong> You failed to deliver meaningful solutions to the core problem. Whatever you attempted, it was not enough to create real change.');
   }
 
   if (inclusivity < 40) {
-    reprimands.push('<strong>Low Inclusivity:</strong> Your approach excluded significant portions of your user base or stakeholder community. You may have solved the problem for some while making things worse for others. Genuine inclusion means considering all voices, especially those most affected.');
+    reprimands.push('<strong>Low Inclusivity:</strong> Your approach excluded significant portions of your user base or stakeholder community.');
   }
 
   if (trust < 40) {
-    reprimands.push('<strong>Low Trust:</strong> Your stakeholders don\'t believe in your leadership or your solutions. Whether through lack of transparency, poor communication, or decisions perceived as self-serving, you lost the confidence of the people who need to support your work. Trust, once broken, is incredibly hard to rebuild.');
+    reprimands.push('<strong>Low Trust:</strong> Your stakeholders do not believe in your leadership or your solutions.');
   }
 
   return reprimands;
@@ -95,7 +120,6 @@ function generateReprimands() {
 
 function generateReflectionQuestions() {
   const { impact, inclusivity, trust, budget } = gameState.data.scores;
-
   const questions = [];
 
   if (gameState.data.gameStatus === 'incomplete') {
@@ -125,7 +149,7 @@ function generateReflectionQuestions() {
   }
 
   if (budget < 0) {
-    questions.push('Looking back, where did you overspend? Which solutions weren\'t worth the cost?');
+    questions.push('Looking back, where did you overspend? Which solutions were not worth the cost?');
   } else if (budget > gameState.data.initialBudget * 0.5) {
     questions.push('Why did you spend conservatively? Were you missing opportunities to do more?');
   } else {
@@ -139,20 +163,20 @@ function generateReflectionQuestions() {
 
 function renderDecisionsSummary() {
   const container = document.getElementById('decisions-summary');
-  
+
   if (gameState.data.choices.length === 0) {
     container.innerHTML = '<p>No decisions recorded.</p>';
     return;
   }
 
-  const html = '<ul style="list-style: none; padding: 0;">' + gameState.data.choices.map((choice, idx) => `
-    <li style="margin-bottom: 12px; padding: 12px; background: #f9fafb; border-left: 4px solid #3b82f6; border-radius: 4px;">
-      <strong>Day ${idx + 1}:</strong> ${choice.choiceText}
+  const html = '<ul style="list-style: none; padding: 0; margin: 0;">' + gameState.data.choices.map((choice, idx) => `
+    <li class="results-block" style="margin-bottom: 12px; padding: 14px 16px; background: rgba(255,255,255,0.86); border: 1px solid rgba(15,23,42,0.08); border-left: 4px solid #3b82f6; border-radius: 16px; box-shadow: 0 10px 22px rgba(16, 32, 51, 0.06);">
+      <strong>Decision ${idx + 1}:</strong> ${choice.choiceText}
       <br><small style="color: #6b7280;">
         Impact: ${choice.effects.impact > 0 ? '+' : ''}${choice.effects.impact}, 
         Inclusivity: ${choice.effects.inclusivity > 0 ? '+' : ''}${choice.effects.inclusivity}, 
         Trust: ${choice.effects.trust > 0 ? '+' : ''}${choice.effects.trust}, 
-        Budget: $${choice.effects.budget > 0 ? '+' : ''}${choice.effects.budget.toLocaleString()}
+        Budget: ${window.TechTycoonUI?.formatCurrency(choice.effects.budget) || ('$' + choice.effects.budget.toLocaleString())}
       </small>
     </li>
   `).join('') + '</ul>';
@@ -181,7 +205,7 @@ async function saveResults() {
 
     const result = await response.json();
     if (result.success) {
-      alert('✓ Results saved to server!');
+      window.TechTycoonUI?.showNotification({ title: 'Results saved', message: 'Your run was saved to the local server.', type: 'success' });
     } else {
       alert('Error saving results. You can download as CSV instead.');
     }
@@ -202,7 +226,6 @@ async function downloadResults() {
       timestamp: new Date().toISOString()
     };
 
-    // Try to use backend export if available
     try {
       const response = await fetch(`http://localhost:3000/api/game/export/${data.timestamp}`, {
         method: 'GET'
@@ -222,7 +245,6 @@ async function downloadResults() {
       console.log('Server export not available, using local CSV generation');
     }
 
-    // Fallback: Generate CSV locally
     let csv = 'TechTycoon Game Results\n';
     csv += `Team Name,${data.teamName}\n`;
     csv += `Problem,${data.problemId}\n`;
@@ -253,13 +275,16 @@ async function downloadResults() {
   }
 }
 
-// Initialize page
 document.addEventListener('DOMContentLoaded', async () => {
   if (!gameState.data.problemId) {
-    window.location.href = 'select-problem.html';
+    window.TechTycoonUI?.navigate('select-problem.html');
     return;
   }
 
-  gameState.endGame();
+  if (gameState.data.gameStatus === 'in-progress') {
+    gameState.endGame('complete');
+  }
+
   renderResults();
 });
+

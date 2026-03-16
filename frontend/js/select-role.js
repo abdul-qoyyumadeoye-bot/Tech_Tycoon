@@ -23,7 +23,7 @@ function selectRole() {
   if (!selected) return;
 
   gameState.setRole(selected.value);
-  window.location.href = 'select-team.html';
+  window.TechTycoonUI?.navigate('select-team.html') || (window.location.href = 'select-team.html');
 }
 
 // Initialize page
@@ -44,3 +44,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+

@@ -10,7 +10,6 @@ async function loadScenarios() {
     const response = await fetch('../data/scenarios.json');
     const data = await response.json();
     const problems = Array.isArray(data.problems) ? data.problems : [];
-    // protect against accidental duplicate entries by id
     const uniqueById = new Map();
     problems.forEach((p) => {
       if (p && p.id && !uniqueById.has(p.id)) uniqueById.set(p.id, p);
@@ -29,18 +28,24 @@ async function loadScenarios() {
 
 function renderProblems() {
   const container = document.getElementById('problems-list');
-  
+
   container.innerHTML = scenarios.map(problem => `
     <label class="problem-card" onclick="updateContinueButton()">
-      <input type="radio" name="problem" value="${problem.id}" style="position: absolute; top: 16px; right: 16px; width: 24px; height: 24px; cursor: pointer;">
-      <div class="problem-theme">${problem.theme}</div>
-      <h3 class="problem-title">${problem.title}</h3>
-      <p class="problem-subinfo"><strong>Deadline:</strong> Day ${problem.totalDays} ${problem.launchDeadline ? `(${problem.launchDeadline})` : ''}</p>
-      <p class="problem-description">${problem.projectBrief || ''}</p>
+      <input type="radio" name="problem" value="${problem.id}" aria-label="Select ${problem.title}">
+      <div>
+        <div class="problem-theme">${problem.theme}</div>
+        <h3 class="problem-title">${problem.title}</h3>
+        <p class="problem-description">${problem.projectBrief || ''}</p>
+      </div>
+      <div class="problem-stat-row">
+        <div class="problem-stat-chip"><span>Deadline</span><strong>Day ${problem.totalDays}</strong></div>
+        <div class="problem-stat-chip"><span>Budget</span><strong>$${(problem.startingBudget || 0).toLocaleString()}</strong></div>
+        <div class="problem-stat-chip"><span>Stages</span><strong>${problem.stages?.length || 0}</strong></div>
+      </div>
+      <p class="problem-subinfo"><strong>Launch:</strong> ${problem.launchDeadline || 'TBC'}</p>
     </label>
   `).join('');
 
-  // Add event listeners to update selected visual state
   document.querySelectorAll('.problem-card').forEach(card => {
     const input = card.querySelector('input[type="radio"]');
     input.addEventListener('change', () => {
@@ -50,6 +55,8 @@ function renderProblems() {
       }
     });
   });
+
+  window.TechTycoonUI?.revealElements(container);
 }
 
 function updateContinueButton() {
@@ -62,22 +69,30 @@ function selectProblem() {
   const selected = document.querySelector('input[name="problem"]:checked');
   if (!selected) return;
 
-  // Find problem and store entire scenario object
   const problem = scenarios.find(p => p.id === selected.value);
   if (problem) {
-    gameState.setProblem(selected.value, problem); // Pass full scenario (NEW)
-    gameState.data.scores.budget = problem.startingBudget || 0;
+    gameState.setProblem(selected.value, problem);
+    gameState.data.scores = {
+      impact: 50,
+      inclusivity: 50,
+      trust: 50,
+      budget: problem.startingBudget || 0
+    };
     gameState.data.initialBudget = problem.startingBudget || 0;
     gameState.data.totalStages = problem.stages.length;
     gameState.data.currentDay = 0;
     gameState.data.totalDays = problem.totalDays || 0;
     gameState.save();
+    window.TechTycoonUI?.showNotification({
+      title: 'Scenario locked',
+      message: `${problem.title} selected. Budget: $${(problem.startingBudget || 0).toLocaleString()}.`,
+      type: 'info'
+    });
   }
 
-  window.location.href = 'brief.html';
+  window.TechTycoonUI?.navigate('brief.html') || (window.location.href = 'brief.html');
 }
 
-// Initialize page
 document.addEventListener('DOMContentLoaded', () => {
   loadScenarios();
 });
